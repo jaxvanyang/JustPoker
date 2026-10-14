@@ -2,6 +2,7 @@ package jaxvanyang.poker;
 
 import jaxvanyang.poker.block.CasinoChair;
 import jaxvanyang.poker.block.CasinoTable;
+import jaxvanyang.poker.item.CardDeck;
 import jaxvanyang.poker.platform.NeoForgePlatformHelper;
 import jaxvanyang.poker.platform.Services;
 import jaxvanyang.poker.renderer.SeatRenderer;
@@ -9,6 +10,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
@@ -32,16 +34,15 @@ public class Poker {
     );
 
     public static final DeferredBlock<Block> POKER_TABLE = BLOCKS.registerBlock("casino_table", CasinoTable::new);
-    public static final DeferredItem<BlockItem> POKER_TABLE_ITEM = ITEMS.registerSimpleBlockItem(
-            "casino_table",
-            POKER_TABLE
-    );
+    public static final DeferredItem<BlockItem> POKER_TABLE_ITEM = ITEMS.registerSimpleBlockItem(POKER_TABLE);
 
     public static final DeferredBlock<Block> CASINO_CHAIR = BLOCKS.registerBlock("casino_chair", CasinoChair::new);
-    public static final DeferredItem<BlockItem> CASINO_CHAIR_ITEM = ITEMS.registerSimpleBlockItem(
-            "casino_chair",
-            CASINO_CHAIR
-    );
+    public static final DeferredItem<BlockItem> CASINO_CHAIR_ITEM = ITEMS.registerSimpleBlockItem(CASINO_CHAIR);
+
+    public static final DeferredItem<Item> BLACK_CARD_DECK = ITEMS.registerItem("black_card_deck", CardDeck::new);
+    public static final DeferredItem<Item> BLUE_CARD_DECK = ITEMS.registerItem("blue_card_deck", CardDeck::new);
+    public static final DeferredItem<Item> PINK_CARD_DECK = ITEMS.registerItem("pink_card_deck", CardDeck::new);
+    public static final DeferredItem<Item> RED_CARD_DECK = ITEMS.registerItem("red_card_deck", CardDeck::new);
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> POKER_TAB = CREATIVE_MODE_TABS.register(
             "poker_tab",
@@ -51,6 +52,10 @@ public class Poker {
                     .displayItems((p, output) -> {
                         output.accept(POKER_TABLE_ITEM);
                         output.accept(CASINO_CHAIR_ITEM);
+                        output.accept(BLACK_CARD_DECK);
+                        output.accept(BLUE_CARD_DECK);
+                        output.accept(PINK_CARD_DECK);
+                        output.accept(RED_CARD_DECK);
                     })
                     .build()
     );

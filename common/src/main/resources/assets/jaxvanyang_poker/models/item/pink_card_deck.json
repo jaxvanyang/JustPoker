@@ -1,0 +1,6 @@
+{
+	"parent": "item/generated",
+	"textures": {
+		"layer0": "jaxvanyang_poker:item/pink_card_deck"
+	}
+}
