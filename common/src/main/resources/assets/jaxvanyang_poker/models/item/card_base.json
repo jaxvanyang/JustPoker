@@ -1,9 +1,9 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "playingcards:items/cards/card_ace_spades",
-		"1": "playingcards:items/cards/card_cover_unknown",
-		"particle": "playingcards:items/cards/card_ace_spades"
+		"0": "jaxvanyang_poker:item/cards/card_ace_spades",
+		"1": "jaxvanyang_poker:item/cards/card_cover_unknown",
+		"particle": "jaxvanyang_poker:item/cards/card_ace_spades"
 	},
 	"elements": [
 		{

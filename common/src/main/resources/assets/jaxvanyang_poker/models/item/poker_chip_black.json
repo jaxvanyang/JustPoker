@@ -1,6 +1,6 @@
 {
 	"parent": "item/generated",
 	"textures": {
-		"layer0": "playingcards:items/poker_chip_black"
+		"layer0": "jaxvanyang_poker:item/poker_chip_black"
 	}
 }

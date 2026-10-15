@@ -1,7 +1,7 @@
 {
-	"parent": "playingcards:item/dice_base",
+	"parent": "jaxvanyang_poker:item/dice_base",
 	"textures": {
-		"0": "playingcards:models/dice_white",
-		"particle": "playingcards:models/dice_white"
+		"0": "jaxvanyang_poker:models/dice_white",
+		"particle": "jaxvanyang_poker:models/dice_white"
 	}
 }

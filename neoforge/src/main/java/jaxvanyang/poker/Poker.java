@@ -2,6 +2,7 @@ package jaxvanyang.poker;
 
 import jaxvanyang.poker.block.CasinoChair;
 import jaxvanyang.poker.block.CasinoTable;
+import jaxvanyang.poker.item.Card;
 import jaxvanyang.poker.item.CardDeck;
 import jaxvanyang.poker.platform.NeoForgePlatformHelper;
 import jaxvanyang.poker.platform.Services;
@@ -43,6 +44,7 @@ public class Poker {
     public static final DeferredItem<Item> BLUE_CARD_DECK = ITEMS.registerItem("blue_card_deck", CardDeck::new);
     public static final DeferredItem<Item> PINK_CARD_DECK = ITEMS.registerItem("pink_card_deck", CardDeck::new);
     public static final DeferredItem<Item> RED_CARD_DECK = ITEMS.registerItem("red_card_deck", CardDeck::new);
+    public static final DeferredItem<Item> CARD = ITEMS.registerItem("card", Card::new);
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> POKER_TAB = CREATIVE_MODE_TABS.register(
             "poker_tab",
