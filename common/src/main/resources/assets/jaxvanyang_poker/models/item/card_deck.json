@@ -1,9 +1,9 @@
 {
 	"parent": "item/generated",
 	"overrides": [
-		{"predicate": {"skin": 0},  "model": "jaxvanyang_poker:item/card_deck_blue"},
-		{"predicate": {"skin": 1},  "model": "jaxvanyang_poker:item/card_deck_red"},
-		{"predicate": {"skin": 2},  "model": "jaxvanyang_poker:item/card_deck_black"},
-		{"predicate": {"skin": 3},  "model": "jaxvanyang_poker:item/card_deck_pig"}
+		{"predicate": {"skin": 0},  "model": "jaxvanyang_poker:item/card_deck_black"},
+		{"predicate": {"skin": 1},  "model": "jaxvanyang_poker:item/card_deck_blue"},
+		{"predicate": {"skin": 2},  "model": "jaxvanyang_poker:item/card_deck_pink"},
+		{"predicate": {"skin": 3},  "model": "jaxvanyang_poker:item/card_deck_red"}
 	]
 }

@@ -1,9 +1,0 @@
-{
-	"parent": "jaxvanyang_poker:item/card_base",
-	"overrides": [
-		{"predicate": {"skin": 0},  "model": "jaxvanyang_poker:item/card_covered_blue"},
-		{"predicate": {"skin": 1},  "model": "jaxvanyang_poker:item/card_covered_red"},
-		{"predicate": {"skin": 2},  "model": "jaxvanyang_poker:item/card_covered_black"},
-		{"predicate": {"skin": 3},  "model": "jaxvanyang_poker:item/card_covered_pig"}
-	]
-}

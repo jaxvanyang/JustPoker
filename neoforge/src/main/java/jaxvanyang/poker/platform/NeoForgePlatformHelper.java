@@ -1,31 +1,16 @@
 package jaxvanyang.poker.platform;
 
-import jaxvanyang.poker.Constants;
+import jaxvanyang.poker.Poker;
+import jaxvanyang.poker.entity.CardDeckEntity;
+import jaxvanyang.poker.entity.CardEntity;
 import jaxvanyang.poker.entity.SeatEntity;
 import jaxvanyang.poker.platform.services.IPlatformHelper;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.item.Item;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.loading.FMLLoader;
-import net.neoforged.neoforge.registries.DeferredRegister;
-
-import java.util.function.Supplier;
 
 public class NeoForgePlatformHelper implements IPlatformHelper {
-    public static final DeferredRegister<EntityType<?>> ENTITY_TYPES = DeferredRegister.create(
-            BuiltInRegistries.ENTITY_TYPE,
-            Constants.MOD_ID
-    );
-
-    public static final Supplier<EntityType<SeatEntity>> SEAT = ENTITY_TYPES.register(
-            "seat",
-            () -> EntityType.Builder.of(
-                    SeatEntity::new,
-                    MobCategory.MISC
-            ).sized(0, 0).build("seat")
-    );
-
     @Override
     public String getPlatformName() {
         return "NeoForge";
@@ -43,6 +28,36 @@ public class NeoForgePlatformHelper implements IPlatformHelper {
 
     @Override
     public EntityType<SeatEntity> getSeatEntityType() {
-        return SEAT.get();
+        return Poker.SEAT.get();
+    }
+
+    @Override
+    public EntityType<CardDeckEntity> getCardDeckEntityType() {
+        return Poker.CARD_DECK_TYPE.get();
+    }
+
+    @Override
+    public EntityType<CardEntity> getCardEntityType() {
+        return Poker.CARD_TYPE.get();
+    }
+
+    @Override
+    public Item getCardItem() {
+        return Poker.CARD.get();
+    }
+
+    @Override
+    public Item getCardBackItem() {
+        return Poker.CARD_BACK.get();
+    }
+
+    @Override
+    public Item getCardDeckItem(byte color) {
+        return switch (color) {
+            case 1 -> Poker.BLUE_CARD_DECK.get();
+            case 2 -> Poker.PINK_CARD_DECK.get();
+            case 3 -> Poker.RED_CARD_DECK.get();
+            default -> Poker.BLACK_CARD_DECK.get();
+        };
     }
 }

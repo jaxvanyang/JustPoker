@@ -1,6 +1,6 @@
 {
 	"parent": "jaxvanyang_poker:item/card_base",
 	"textures": {
-		"0": "jaxvanyang_poker:item/cards/card_cover_blue"
+		"0": "jaxvanyang_poker:item/cards/card_back_pink"
 	}
 }

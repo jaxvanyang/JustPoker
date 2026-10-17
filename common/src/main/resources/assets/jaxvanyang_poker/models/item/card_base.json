@@ -2,7 +2,7 @@
 	"credit": "Made with Blockbench",
 	"textures": {
 		"0": "jaxvanyang_poker:item/cards/card_ace_spades",
-		"1": "jaxvanyang_poker:item/cards/card_cover_unknown",
+		"1": "jaxvanyang_poker:item/cards/card_back_unknown",
 		"particle": "jaxvanyang_poker:item/cards/card_ace_spades"
 	},
 	"elements": [

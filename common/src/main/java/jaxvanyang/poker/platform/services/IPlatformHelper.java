@@ -1,7 +1,10 @@
 package jaxvanyang.poker.platform.services;
 
+import jaxvanyang.poker.entity.CardDeckEntity;
+import jaxvanyang.poker.entity.CardEntity;
 import jaxvanyang.poker.entity.SeatEntity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.item.Item;
 
 public interface IPlatformHelper {
     /**
@@ -36,5 +39,27 @@ public interface IPlatformHelper {
         return isDevelopmentEnvironment() ? "development" : "production";
     }
 
-    EntityType<SeatEntity> getSeatEntityType();
+    default EntityType<SeatEntity> getSeatEntityType() {
+        throw new UnsupportedOperationException("getSeatEntityType is not implemented for this platform");
+    }
+
+    default EntityType<CardDeckEntity> getCardDeckEntityType() {
+        throw new UnsupportedOperationException("getSeatEntityType is not implemented for this platform");
+    }
+
+    default EntityType<CardEntity> getCardEntityType() {
+        throw new UnsupportedOperationException("getSeatEntityType is not implemented for this platform");
+    }
+
+    default Item getCardItem() {
+        throw new UnsupportedOperationException("getCardCoveredItem is not implemented for this platform");
+    }
+
+    default Item getCardBackItem() {
+        throw new UnsupportedOperationException("getCardCoveredItem is not implemented for this platform");
+    }
+
+    default Item getCardDeckItem(byte color) {
+        throw new UnsupportedOperationException("getCardCoveredItem is not implemented for this platform");
+    }
 }
