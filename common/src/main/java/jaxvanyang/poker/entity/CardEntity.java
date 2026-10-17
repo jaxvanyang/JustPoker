@@ -17,7 +17,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
-public class CardEntity extends CardBase {
+public class CardEntity extends EntityBase {
     public static final EntityDataAccessor<Byte> CARD = SynchedEntityData.defineId(
             CardEntity.class,
             EntityDataSerializers.BYTE
@@ -30,8 +30,8 @@ public class CardEntity extends CardBase {
     public CardEntity(Level level, Vec3 pos, float rotation, byte color, byte card) {
         super(Services.PLATFORM.getCardEntityType(), level);
         setPos(pos);
-        setColor(color);
         setRotation(rotation);
+        setColor(color);
         setCard(card);
     }
 

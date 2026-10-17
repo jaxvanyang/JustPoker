@@ -7,20 +7,29 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MoverType;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
-public class CardBase extends Entity {
+public class EntityBase extends Entity {
     public static final EntityDataAccessor<Byte> COLOR = SynchedEntityData.defineId(
-            CardBase.class,
+            EntityBase.class,
             EntityDataSerializers.BYTE
     );
     public static final EntityDataAccessor<Float> ROTATION = SynchedEntityData.defineId(
-            CardBase.class,
+            EntityBase.class,
             EntityDataSerializers.FLOAT
     );
 
-    public CardBase(EntityType<?> entityType, Level level) {
+    public static void spawnStackAtEntity(Level level, ItemStack stack, Entity entity) {
+        ItemEntity itemEntity = new ItemEntity(level, entity.getX(), entity.getY(), entity.getZ(), stack);
+        itemEntity.setNoPickUpDelay();
+        itemEntity.setDeltaMovement(0, 0, 0);
+        level.addFreshEntity(itemEntity);
+    }
+
+    public EntityBase(EntityType<?> entityType, Level level) {
         super(entityType, level);
     }
 
@@ -29,6 +38,7 @@ public class CardBase extends Entity {
     }
 
     public void setColor(byte color) {
+        assert color >= 0;
         entityData.set(COLOR, color);
     }
 

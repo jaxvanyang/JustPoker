@@ -4,13 +4,10 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import jaxvanyang.poker.entity.CardEntity;
 import jaxvanyang.poker.item.Card;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 
 public class CardRenderer extends EntityRenderer<CardEntity> {
@@ -24,28 +21,19 @@ public class CardRenderer extends EntityRenderer<CardEntity> {
             float entityYaw,
             float partialTick,
             PoseStack poseStack,
-            MultiBufferSource bufferSource,
+            MultiBufferSource buffer,
             int packedLight
     ) {
-        super.render(entity, entityYaw, partialTick, poseStack, bufferSource, packedLight);
+        super.render(entity, entityYaw, partialTick, poseStack, buffer, packedLight);
 
         ItemStack stack = Card.newStack(entity.getColor(), entity.getCard());
 
         poseStack.pushPose();
 
+        // TODO: fix z-fighting
         poseStack.mulPose(Axis.YP.rotationDegrees(-entity.getRotation() + 180.0F));
         poseStack.scale(1.5F, 1.5F, 1.5F);
-        poseStack.translate(0.0D, 0.001D, 0.0D);
-        Minecraft.getInstance().getItemRenderer().renderStatic(
-                stack,
-                ItemDisplayContext.GROUND,
-                packedLight,
-                OverlayTexture.NO_OVERLAY,
-                poseStack,
-                bufferSource,
-                null,
-                0
-        );
+        Helper.renderItem(stack, 0, 0, 0.001D, poseStack, buffer, packedLight);
 
         poseStack.popPose();
     }

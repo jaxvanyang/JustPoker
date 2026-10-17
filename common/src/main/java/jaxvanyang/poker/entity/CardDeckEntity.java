@@ -13,7 +13,6 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -21,7 +20,7 @@ import net.minecraft.world.phys.Vec3;
 
 import java.util.Arrays;
 
-public class CardDeckEntity extends CardBase {
+public class CardDeckEntity extends EntityBase {
     public static final EntityDataSerializer<byte[]> BYTE_ARRAY = EntityDataSerializer.forValueType(ByteBufCodecs.BYTE_ARRAY);
     public static final EntityDataAccessor<byte[]> DECK = SynchedEntityData.defineId(CardDeckEntity.class, BYTE_ARRAY);
 
@@ -126,16 +125,12 @@ public class CardDeckEntity extends CardBase {
     @Override
     public boolean hurt(DamageSource source, float amount) {
         if (source.getEntity() instanceof Player player) {
-            if (!player.isCreative()) {
+            if (!player.isCreative() && !level().isClientSide()) {
                 ItemStack stack = CardDeck.newStack(getColor(), getDeck());
-                ItemEntity entity = new ItemEntity(level(), getX(), getY(), getZ(), stack);
-                entity.setNoPickUpDelay();
-                entity.setDeltaMovement(0, 0, 0);
-                level().addFreshEntity(entity);
+                spawnStackAtEntity(level(), stack, this);
             }
 
             remove(RemovalReason.DISCARDED);
-
             return true;
         }
 
@@ -144,7 +139,7 @@ public class CardDeckEntity extends CardBase {
 
     @Override
     public void tick() {
-        if (getDeck().length == 0) {
+        if (getDeck().length == 0 && !level().isClientSide()) {
             remove(RemovalReason.DISCARDED);
             return;
         }
