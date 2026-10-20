@@ -1,7 +1,7 @@
 {
   "values": [
-    "jaxvanyang_poker:casino_table",
-    "jaxvanyang_poker:casino_chair"
+    "just_poker:casino_table",
+    "just_poker:casino_chair"
   ],
   "replace": false
 }

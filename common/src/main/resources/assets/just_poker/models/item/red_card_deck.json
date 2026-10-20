@@ -1,0 +1,6 @@
+{
+	"parent": "item/generated",
+	"textures": {
+		"layer0": "just_poker:item/red_card_deck"
+	}
+}

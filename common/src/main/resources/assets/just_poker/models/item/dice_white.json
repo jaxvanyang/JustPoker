@@ -1,0 +1,7 @@
+{
+	"parent": "just_poker:item/dice_base",
+	"textures": {
+		"0": "just_poker:models/dice_white",
+		"particle": "just_poker:models/dice_white"
+	}
+}

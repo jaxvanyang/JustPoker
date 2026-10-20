@@ -113,7 +113,7 @@ public class Poker {
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> POKER_TAB = CREATIVE_MODE_TABS.register(
             "poker_tab",
             () -> CreativeModeTab.builder()
-                    .title(Component.translatable("itemGroup.jaxvanyang_poker"))
+                    .title(Component.translatable("itemGroup.%s".formatted(MOD_ID)))
                     .icon(() -> CASINO_TABLE_ITEM.get().getDefaultInstance())
                     .displayItems((p, output) -> {
                         output.accept(BLACK_CARD_DECK);

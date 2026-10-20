@@ -1,0 +1,9 @@
+{
+	"parent": "just_poker:item/card_base",
+	"overrides": [
+		{"predicate": {"custom_model_data": 0},  "model": "just_poker:item/card_back_black"},
+		{"predicate": {"custom_model_data": 1},  "model": "just_poker:item/card_back_blue"},
+		{"predicate": {"custom_model_data": 2},  "model": "just_poker:item/card_back_pink"},
+		{"predicate": {"custom_model_data": 3},  "model": "just_poker:item/card_back_red"}
+	]
+}

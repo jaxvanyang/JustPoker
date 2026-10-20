@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "A ",
+    "AB",
+    " C"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:black_wool"
+    },
+    "B": {
+      "item": "minecraft:stick"
+    },
+    "C": {
+      "item" : "minecraft:smooth_stone_slab"
+    }
+  },
+  "result": {
+    "id": "just_poker:casino_chair",
+    "count": 1
+  }
+}

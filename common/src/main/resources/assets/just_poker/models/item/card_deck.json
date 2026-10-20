@@ -1,0 +1,9 @@
+{
+	"parent": "item/generated",
+	"overrides": [
+		{"predicate": {"skin": 0},  "model": "just_poker:item/card_deck_black"},
+		{"predicate": {"skin": 1},  "model": "just_poker:item/card_deck_blue"},
+		{"predicate": {"skin": 2},  "model": "just_poker:item/card_deck_pink"},
+		{"predicate": {"skin": 3},  "model": "just_poker:item/card_deck_red"}
+	]
+}

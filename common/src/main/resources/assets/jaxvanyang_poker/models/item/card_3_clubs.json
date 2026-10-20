@@ -1,6 +1,0 @@
-{
-	"parent": "jaxvanyang_poker:item/card_base",
-	"textures": {
-		"0": "jaxvanyang_poker:item/cards/card_3_clubs"
-	}
-}

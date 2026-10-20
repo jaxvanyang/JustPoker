@@ -1,0 +1,6 @@
+{
+	"parent": "just_poker:item/card_base",
+	"textures": {
+		"0": "just_poker:item/cards/card_9_hearts"
+	}
+}
