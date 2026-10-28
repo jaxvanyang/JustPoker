@@ -114,7 +114,7 @@ public class Poker {
             "poker_tab",
             () -> CreativeModeTab.builder()
                     .title(Component.translatable("itemGroup.%s".formatted(MOD_ID)))
-                    .icon(() -> CASINO_TABLE_ITEM.get().getDefaultInstance())
+                    .icon(() -> CARD.get().getDefaultInstance())
                     .displayItems((p, output) -> {
                         output.accept(BLACK_CARD_DECK);
                         output.accept(BLUE_CARD_DECK);
