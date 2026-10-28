@@ -54,7 +54,7 @@ public class ChipEntity extends EntityBase {
         if (heldStack.getItem() instanceof Chip chip && chip.getColor() == getColor()) {
             if (getSize() >= MAX_SIZE) {
                 if (level().isClientSide()) {
-                    player.displayClientMessage(Component.literal("The stack is full!"), true);
+                    player.displayClientMessage(Component.translatable("message.just_poker.chip_stack_is_full"), true);
                 }
 
                 return InteractionResult.CONSUME;

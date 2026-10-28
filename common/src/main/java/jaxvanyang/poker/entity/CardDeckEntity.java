@@ -82,12 +82,12 @@ public class CardDeckEntity extends EntityBase {
                     setDeck(CardDeck.newRandomDeck());
                 } else {
                     // TODO: play shuffle sound
-                    player.displayClientMessage(Component.literal("Deck is shuffled"), true);
+                    player.displayClientMessage(Component.translatable("message.just_poker.deck_shulled"), true);
                 }
 
                 return InteractionResult.SUCCESS;
             } else if (level().isClientSide()) {
-                player.displayClientMessage(Component.literal("Deck is not full, cannot shuffle"), true);
+                player.displayClientMessage(Component.translatable("message.just_poker.deck_not_full"), true);
             }
 
             return InteractionResult.PASS;

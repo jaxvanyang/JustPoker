@@ -12,6 +12,9 @@
   "item.just_poker.green_casino_chip": "Green Casino Chip",
   "item.just_poker.red_casino_chip": "Red Casino Chip",
   "item.just_poker.white_casino_chip": "White Casino Chip",
+  "message.just_poker.deck_shulled": "Deck has been shuffled!",
+  "message.just_poker.deck_not_full": "Deck is not full! Cannot shuffle!",
+  "message.just_poker.chip_stack_is_full": "The stack is full! Cannot add more chips!",
 
   "item.just_poker.dice_white": "White Dice",
   "lore.cover": "Cover:",
