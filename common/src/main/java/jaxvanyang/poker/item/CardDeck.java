@@ -19,10 +19,6 @@ public class CardDeck extends Item {
         super(properties.stacksTo(1));
     }
 
-    public static ItemStack newRandomStack(byte color) {
-        return newStack(color, newRandomDeck());
-    }
-
     public static ItemStack newStack(byte color, byte[] deck) {
         assert deck.length != 0;
         ItemStack stack = new ItemStack(Services.PLATFORM.getCardDeckItem(color));
@@ -53,10 +49,7 @@ public class CardDeck extends Item {
     }
 
     public static byte[] newRandomDeck() {
-        byte[] deck = new byte[DECK_SIZE];
-        for (byte i = 0; i < DECK_SIZE; i++) {
-            deck[i] = (byte) (i + 1);
-        }
+        byte[] deck = newSortedDeck();
         // shuffle the deck
         for (int i = 0; i < DECK_SIZE; i++) {
             int j = (int) (Math.random() * DECK_SIZE);
