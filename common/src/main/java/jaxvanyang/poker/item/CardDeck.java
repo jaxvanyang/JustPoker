@@ -37,7 +37,7 @@ public class CardDeck extends Item {
         CustomData data = stack.get(DataComponents.CUSTOM_DATA);
         byte[] deck;
         if (data == null) {
-            deck = newRandomDeck();
+            deck = newSortedDeck();
         } else {
             deck = data.copyTag().getByteArray("deck");
         }
@@ -63,6 +63,14 @@ public class CardDeck extends Item {
             byte tmp = deck[i];
             deck[i] = deck[j];
             deck[j] = tmp;
+        }
+        return deck;
+    }
+
+    public static byte[] newSortedDeck() {
+        byte[] deck = new byte[DECK_SIZE];
+        for (byte i = 0; i < DECK_SIZE; i++) {
+            deck[i] = (byte) (i + 1);
         }
         return deck;
     }
