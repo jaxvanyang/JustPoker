@@ -32,7 +32,7 @@ public class CardDeckRenderer extends EntityRenderer<CardDeckEntity> {
         poseStack.pushPose();
 
         poseStack.mulPose(Axis.YP.rotationDegrees(-entity.getRotation() + 180.0F));
-        poseStack.scale(1.5F, 1.5F, 1.5F);
+        poseStack.scale(2.0F, 1.5F, 2.0F);
         // TODO: just render a scaled card
         for (int i = 0; i < entity.getEntityData().get(CardDeckEntity.DECK).length; ++i) {
             poseStack.pushPose();

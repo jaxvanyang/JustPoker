@@ -32,7 +32,7 @@ public class CardRenderer extends EntityRenderer<CardEntity> {
 
         // TODO: fix z-fighting
         poseStack.mulPose(Axis.YP.rotationDegrees(-entity.getRotation() + 180.0F));
-        poseStack.scale(1.5F, 1.5F, 1.5F);
+        poseStack.scale(2.0F, 1.5F, 2.0F);
         Helper.renderItem(stack, 0, 0, 0.001D, poseStack, buffer, packedLight);
 
         poseStack.popPose();
