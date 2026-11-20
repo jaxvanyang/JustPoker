@@ -26,13 +26,28 @@ jobs:
           path: 'neoforge/build/libs/*.jar'
           archive: false
           if-no-files-found: 'error'
-      - uses: actions/upload-artifact@v7
+      # - uses: actions/upload-artifact@v7
+      #   with:
+      #     path: 'fabric/build/libs/*.jar'
+      #     archive: false
+      #     if-no-files-found: 'error'
+      # - uses: actions/upload-artifact@v7
+      #   with:
+      #     path: 'forge/build/libs/*.jar'
+      #     archive: false
+      #     if-no-files-found: 'error'
+
+  publish:
+    runs-on: ubuntu-latest
+    needs: build
+    environment: publish
+    if: startswith(github.event.head_commit.message, 'v')
+    steps:
+      - uses: actions/download-artifact@v8
         with:
-          path: 'fabric/build/libs/*.jar'
-          archive: false
-          if-no-files-found: 'error'
-      - uses: actions/upload-artifact@v7
+          merge-multiple: true
+      - uses: Kira-NT/mc-publish@v3
         with:
-          path: 'forge/build/libs/*.jar'
-          archive: false
-          if-no-files-found: 'error'
+          files: '*.jar'
+          modrinth-id: LJxszJoe
+          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
