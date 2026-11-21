@@ -17,6 +17,9 @@
     "entrypoints": {
         "main": [
             "jaxvanyang.poker.Poker"
+        ],
+        "client": [
+            "jaxvanyang.poker.ClientPoker"
         ]
     },
     "depends": {
