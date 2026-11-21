@@ -34,6 +34,7 @@
   "item.just_poker.card_color.1": "Blue",
   "item.just_poker.card_color.2": "Pink",
   "item.just_poker.card_color.3": "Red",
+  "item.just_poker.card_deck.missing": "Missing:",
   "message.just_poker.deck_shulled": "Deck has been shuffled!",
   "message.just_poker.deck_not_full": "Deck is not full! Cannot shuffle!",
   "message.just_poker.chip_stack_is_full": "The stack is full! Cannot add more chips!"

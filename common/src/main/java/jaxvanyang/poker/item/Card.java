@@ -81,6 +81,26 @@ public class Card extends Item {
         };
     }
 
+    public static String get_suit_unicode(byte suit) {
+        return switch (suit) {
+            case 0 -> "♥";
+            case 1 -> "♦";
+            case 2 -> "♣";
+            case 3 -> "♠";
+            default -> throw new IllegalArgumentException("Invalid suit: " + suit);
+        };
+    }
+
+    public static String get_rank_short(byte rank) {
+        return switch (rank) {
+            case 1 -> "A";
+            case 11 -> "J";
+            case 12 -> "Q";
+            case 13 -> "K";
+            default -> String.valueOf(rank);
+        };
+    }
+
     @Override
     public InteractionResult useOn(UseOnContext context) {
         Level level = context.getLevel();

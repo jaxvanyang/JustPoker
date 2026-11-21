@@ -5,12 +5,17 @@ import jaxvanyang.poker.platform.Services;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.CustomData;
+import net.minecraft.world.item.component.ItemLore;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class CardDeck extends Item {
     public static final int DECK_SIZE = 52;
@@ -25,6 +30,35 @@ public class CardDeck extends Item {
         // use duability to indicate the number of cards left in the deck
         stack.set(DataComponents.MAX_DAMAGE, DECK_SIZE);
         setDeck(stack, deck);
+        if (deck.length == DECK_SIZE) {
+            return stack;
+        }
+
+        boolean[] missing = new boolean[DECK_SIZE + 1];
+        Arrays.fill(missing, true);
+        for (byte b : deck) {
+            missing[b] = false;
+        }
+        List<Component> lore = new java.util.ArrayList<>(List.of(Component.translatable(
+                "item.just_poker.card_deck.missing")));
+
+        for (byte suit = 0; suit < 4; ++suit) {
+            StringBuilder line = new StringBuilder();
+            for (byte rank = 1; rank <= 13; ++rank) {
+                byte cardId = (byte) (suit * 13 + rank);
+                if (missing[cardId]) {
+                    if (!line.isEmpty()) {
+                        line.append(",");
+                    }
+                    line.append(Card.get_rank_short(rank));
+                }
+            }
+
+            if (!line.isEmpty()) {
+                lore.add(Component.literal(Card.get_suit_unicode(suit) + " " + line));
+            }
+        }
+        stack.set(DataComponents.LORE, new ItemLore(lore));
 
         return stack;
     }
