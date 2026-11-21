@@ -30,35 +30,6 @@ public class CardDeck extends Item {
         // use duability to indicate the number of cards left in the deck
         stack.set(DataComponents.MAX_DAMAGE, DECK_SIZE);
         setDeck(stack, deck);
-        if (deck.length == DECK_SIZE) {
-            return stack;
-        }
-
-        boolean[] missing = new boolean[DECK_SIZE + 1];
-        Arrays.fill(missing, true);
-        for (byte b : deck) {
-            missing[b] = false;
-        }
-        List<Component> lore = new java.util.ArrayList<>(List.of(Component.translatable(
-                "item.just_poker.card_deck.missing")));
-
-        for (byte suit = 0; suit < 4; ++suit) {
-            StringBuilder line = new StringBuilder();
-            for (byte rank = 1; rank <= 13; ++rank) {
-                byte cardId = (byte) (suit * 13 + rank);
-                if (missing[cardId]) {
-                    if (!line.isEmpty()) {
-                        line.append(",");
-                    }
-                    line.append(Card.get_rank_short(rank));
-                }
-            }
-
-            if (!line.isEmpty()) {
-                lore.add(Component.literal(Card.get_suit_unicode(suit) + " " + line));
-            }
-        }
-        stack.set(DataComponents.LORE, new ItemLore(lore));
 
         return stack;
     }
@@ -80,6 +51,36 @@ public class CardDeck extends Item {
         tags.putByteArray("deck", deck);
         stack.set(DataComponents.CUSTOM_DATA, CustomData.of(tags));
         stack.setDamageValue(DECK_SIZE - deck.length);
+
+        if (deck.length == DECK_SIZE) {
+            stack.set(DataComponents.LORE, ItemLore.EMPTY);
+            return;
+        }
+
+        boolean[] missing = new boolean[DECK_SIZE + 1];
+        Arrays.fill(missing, true);
+        for (byte b : deck) {
+            missing[b] = false;
+        }
+        List<Component> lore = new java.util.ArrayList<>(List.of(Component.translatable(
+                "item.just_poker.card_deck.missing")));
+        for (byte suit = 0; suit < 4; ++suit) {
+            StringBuilder line = new StringBuilder();
+            for (byte rank = 1; rank <= 13; ++rank) {
+                byte cardId = (byte) (suit * 13 + rank);
+                if (missing[cardId]) {
+                    if (!line.isEmpty()) {
+                        line.append(",");
+                    }
+                    line.append(Card.get_rank_short(rank));
+                }
+            }
+
+            if (!line.isEmpty()) {
+                lore.add(Component.literal(Card.get_suit_unicode(suit) + " " + line));
+            }
+        }
+        stack.set(DataComponents.LORE, new ItemLore(lore));
     }
 
     public static byte[] newRandomDeck() {
