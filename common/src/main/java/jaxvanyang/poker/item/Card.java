@@ -1,10 +1,12 @@
 package jaxvanyang.poker.item;
 
+import jaxvanyang.poker.entity.CardDeckEntity;
 import jaxvanyang.poker.entity.CardEntity;
 import jaxvanyang.poker.platform.Services;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.CustomData;
@@ -45,13 +47,13 @@ public class Card extends Item {
         }
 
         ItemStack stack = context.getItemInHand();
-        CardEntity entity = new CardEntity(
+        Entity entity = context.getPlayer().isCrouching() ? new CardDeckEntity(
                 level,
                 context.getClickLocation(),
                 context.getRotation(),
                 getColor(stack),
-                getCardId(stack)
-        );
+                new byte[]{getCardId(stack)}
+        ) : new CardEntity(level, context.getClickLocation(), context.getRotation(), getColor(stack), getCardId(stack));
         level.addFreshEntity(entity);
         context.getItemInHand().shrink(1);
 
