@@ -8,7 +8,7 @@
         "${mod_author}"
     ],
     "contact": {
-        "homepage": "https://TODO.change.to.modrinth.page",
+        "homepage": "https://modrinth.com/mod/just-poker",
         "sources": "https://github.com/jaxvanyang/Poker"
     },
     "license": "${license}",
