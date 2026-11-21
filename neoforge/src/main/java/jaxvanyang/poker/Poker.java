@@ -37,7 +37,6 @@ import static jaxvanyang.poker.Constants.MOD_ID;
 
 @Mod(MOD_ID)
 public class Poker {
-    // TODO: find better variable names
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(MOD_ID);
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(MOD_ID);
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(
