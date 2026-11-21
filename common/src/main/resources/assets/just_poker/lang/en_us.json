@@ -37,5 +37,7 @@
   "item.just_poker.card_deck.missing": "Missing:",
   "message.just_poker.deck_shulled": "Deck has been shuffled!",
   "message.just_poker.deck_not_full": "Deck is not full! Cannot shuffle!",
-  "message.just_poker.chip_stack_is_full": "The stack is full! Cannot add more chips!"
+  "message.just_poker.chip_stack_is_full": "The stack is full! Cannot add more chips!",
+  "message.just_poker.not_same_color": "The card color does not match the deck color!",
+  "message.just_poker.already_in_deck": "This card is already in the deck!"
 }

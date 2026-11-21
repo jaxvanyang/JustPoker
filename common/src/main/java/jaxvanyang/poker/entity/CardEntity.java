@@ -4,6 +4,7 @@ import jaxvanyang.poker.item.Card;
 import jaxvanyang.poker.item.CardDeck;
 import jaxvanyang.poker.platform.Services;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -64,10 +65,15 @@ public class CardEntity extends EntityBase {
         // pick the card and place it onto the deck
         if (heldStack.getItem() instanceof CardDeck cardDeck) {
             byte deckColor = cardDeck.getColor();
+            if (deckColor != getColor()) {
+                player.displayClientMessage(Component.translatable("message.just_poker.not_same_color"), true);
+                return InteractionResult.PASS;
+            }
+
             byte[] deck = CardDeck.getDeck(heldStack);
             byte card = getCard();
-
-            if (deckColor != getColor() || CardDeckEntity.is_card_in_deck(card, deck)) {
+            if (CardDeckEntity.is_card_in_deck(card, deck)) {
+                player.displayClientMessage(Component.translatable("message.just_poker.already_in_deck"), true);
                 return InteractionResult.PASS;
             }
 

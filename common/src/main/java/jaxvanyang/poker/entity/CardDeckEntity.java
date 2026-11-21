@@ -97,9 +97,14 @@ public class CardDeckEntity extends EntityBase {
         if (heldStack.getItem() instanceof Card card) {
             byte cardColor = Card.getColor(heldStack);
             assert 0 <= cardColor && cardColor < 4;
+            if (cardColor != getColor()) {
+                player.displayClientMessage(Component.translatable("message.just_poker.not_same_color"), true);
+                return InteractionResult.PASS;
+            }
             byte cardId = Card.getCardId(heldStack);
             assert 1 <= cardId && cardId <= CardDeck.DECK_SIZE;
-            if (cardColor != getColor() || is_card_in_deck(cardId, getDeck())) {
+            if (is_card_in_deck(cardId, getDeck())) {
+                player.displayClientMessage(Component.translatable("message.just_poker.already_in_deck"), true);
                 return InteractionResult.PASS;
             }
 
