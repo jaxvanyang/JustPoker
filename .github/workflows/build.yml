@@ -46,19 +46,17 @@ jobs:
       - uses: actions/download-artifact@v8
         with:
           merge-multiple: true
-      - run: ls -lR
+      - run: ls -R
       - uses: Kira-NT/mc-publish@v3
         with:
           files: '*-fabric-*.jar'
           modrinth-id: LJxszJoe
           modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
-          fail-mode: skip
       - uses: Kira-NT/mc-publish@v3
         with:
           files: '*-forge-*.jar'
           modrinth-id: LJxszJoe
           modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
-          fail-mode: skip
       - uses: Kira-NT/mc-publish@v3
         with:
           files: '*-neoforge-*.jar'
