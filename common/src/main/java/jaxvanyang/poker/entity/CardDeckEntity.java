@@ -9,6 +9,7 @@ import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializer;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
@@ -81,7 +82,8 @@ public class CardDeckEntity extends EntityBase {
                 if (!level().isClientSide()) {
                     setDeck(CardDeck.newRandomDeck());
                 } else {
-                    // TODO: play shuffle sound
+                    // TODO: use a custom shuffle sound
+                    player.playSound(SoundEvents.BOOK_PAGE_TURN);
                     player.displayClientMessage(Component.translatable("message.just_poker.deck_shulled"), true);
                 }
 
