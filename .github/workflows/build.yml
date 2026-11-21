@@ -2,7 +2,7 @@ name: Build
 
 on:
   push:
-    branches-ignore: ['dependabot/**']
+    branches-ignore: [ 'dependabot/**' ]
   pull_request:
   workflow_dispatch:
 
@@ -26,16 +26,16 @@ jobs:
           path: 'neoforge/build/libs/*.jar'
           archive: false
           if-no-files-found: 'error'
-      # - uses: actions/upload-artifact@v7
-      #   with:
-      #     path: 'fabric/build/libs/*.jar'
-      #     archive: false
-      #     if-no-files-found: 'error'
-      # - uses: actions/upload-artifact@v7
-      #   with:
-      #     path: 'forge/build/libs/*.jar'
-      #     archive: false
-      #     if-no-files-found: 'error'
+      - uses: actions/upload-artifact@v7
+        with:
+          path: 'fabric/build/libs/*.jar'
+          archive: false
+          if-no-files-found: 'error'
+      - uses: actions/upload-artifact@v7
+        with:
+          path: 'forge/build/libs/*.jar'
+          archive: false
+          if-no-files-found: 'error'
 
   publish:
     runs-on: ubuntu-latest
