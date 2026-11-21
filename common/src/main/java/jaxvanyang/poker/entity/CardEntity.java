@@ -50,31 +50,6 @@ public class CardEntity extends EntityBase {
     }
 
     @Override
-    public InteractionResult interactAt(Player player, Vec3 pos, InteractionHand hand) {
-        ItemStack heldStack = player.getItemInHand(hand);
-
-        // place the card over self
-        if (heldStack.getItem() instanceof Card) {
-            Level level = level();
-            if (!level().isClientSide()) {
-                CardEntity entity = new CardEntity(
-                        level,
-                        this.position().add(pos),
-                        player.getYRot(),
-                        Card.getColor(heldStack),
-                        Card.getCardId(heldStack)
-                );
-                level.addFreshEntity(entity);
-                heldStack.shrink(1);
-            }
-
-            return InteractionResult.SUCCESS;
-        }
-
-        return super.interactAt(player, pos, hand);
-    }
-
-    @Override
     public InteractionResult interact(Player player, InteractionHand hand) {
         ItemStack heldStack = player.getItemInHand(hand);
 
