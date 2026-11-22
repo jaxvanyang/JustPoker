@@ -10,12 +10,16 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
+
+import java.util.List;
 
 public class ChipEntity extends EntityBase {
     public static final byte MAX_SIZE = 64;
@@ -44,7 +48,13 @@ public class ChipEntity extends EntityBase {
     public void setSize(byte size) {
         assert 0 <= size && size <= MAX_SIZE;
         entityData.set(SIZE, size);
+        refreshDimensions();
         setCustomName(Component.literal(String.valueOf(size)));
+    }
+
+    @Override
+    public EntityDimensions getDimensions(Pose pose) {
+        return EntityDimensions.fixed(0.25F, 0.02F + 0.01575F * getSize());
     }
 
     @Override
@@ -100,21 +110,19 @@ public class ChipEntity extends EntityBase {
 
         if (getSize() <= 0) {
             remove(RemovalReason.DISCARDED);
-            return;
         }
+    }
 
-        // FIXME: don't update bounding box here
-        Vec3 pos = position();
-        double margin = 0.125D;
-        double dy = 0.01575D;
-        setBoundingBox(new AABB(
-                pos.x - margin,
-                pos.y,
-                pos.z - margin,
-                pos.x + margin,
-                pos.y + 0.02D + (dy * getSize()),
-                pos.z + margin
-        ));
+    @Override
+    public void onSyncedDataUpdated(List<SynchedEntityData.DataValue<?>> dataValues) {
+        super.onSyncedDataUpdated(dataValues);
+
+        for (var dataValue : dataValues) {
+            if (dataValue.id() == SIZE.id()) {
+                refreshDimensions();
+                break;
+            }
+        }
     }
 
     @Override

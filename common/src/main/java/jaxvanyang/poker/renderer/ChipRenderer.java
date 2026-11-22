@@ -51,21 +51,6 @@ public class ChipRenderer extends EntityRenderer<ChipEntity> {
     }
 
     @Override
-    protected void renderNameTag(
-            ChipEntity entity,
-            Component displayName,
-            PoseStack poseStack,
-            MultiBufferSource bufferSource,
-            int packedLight,
-            float partialTick
-    ) {
-        poseStack.pushPose();
-        poseStack.translate(0, entity.getSize() * 0.01575, 0);
-        super.renderNameTag(entity, displayName, poseStack, bufferSource, packedLight, partialTick);
-        poseStack.popPose();
-    }
-
-    @Override
     public ResourceLocation getTextureLocation(ChipEntity cardEntity) {
         return null;
     }
