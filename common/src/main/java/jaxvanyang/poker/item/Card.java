@@ -29,7 +29,10 @@ public class Card extends Item {
         CompoundTag tags = new CompoundTag();
         tags.putByte("color", color);
         stack.set(DataComponents.CUSTOM_DATA, CustomData.of(tags));
-        stack.set(DataComponents.CUSTOM_MODEL_DATA, new CustomModelData(cardId));
+        stack.set(
+                DataComponents.CUSTOM_MODEL_DATA,
+                new CustomModelData(List.of(), List.of(), List.of(String.valueOf(cardId)), List.of())
+        );
         Component suit = Component.translatable("item.just_poker.suit." + get_suit(cardId));
         Component rank = Component.translatable("item.just_poker.rank." + get_rank(cardId));
         stack.set(DataComponents.ITEM_NAME, Component.translatable("item.just_poker.card_name", suit, rank));
@@ -57,7 +60,9 @@ public class Card extends Item {
     }
 
     public static byte getCardId(ItemStack stack) {
-        return (byte) stack.get(DataComponents.CUSTOM_MODEL_DATA).value();
+        var data = stack.get(DataComponents.CUSTOM_MODEL_DATA).getString(0);
+        assert data != null;
+        return Byte.parseByte(data);
     }
 
     public static String get_suit(byte cardId) {

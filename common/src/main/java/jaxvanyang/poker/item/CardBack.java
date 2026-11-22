@@ -6,6 +6,8 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.CustomModelData;
 
+import java.util.List;
+
 // Helper item with only color to render covered cards and decks, card data is stored in the entity
 public class CardBack extends Item {
     public CardBack(Properties properties) {
@@ -14,11 +16,10 @@ public class CardBack extends Item {
 
     public static ItemStack newStack(byte color) {
         ItemStack stack = new ItemStack(Services.PLATFORM.getCardBackItem());
-        stack.set(DataComponents.CUSTOM_MODEL_DATA, new CustomModelData(color));
+        stack.set(
+                DataComponents.CUSTOM_MODEL_DATA,
+                new CustomModelData(List.of(), List.of(), List.of(String.valueOf(color)), List.of())
+        );
         return stack;
-    }
-
-    public static byte getColor(ItemStack stack) {
-        return (byte) stack.get(DataComponents.CUSTOM_MODEL_DATA).value();
     }
 }
