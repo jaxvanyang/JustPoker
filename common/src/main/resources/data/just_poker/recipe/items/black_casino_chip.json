@@ -7,12 +7,8 @@
     " A "
   ],
   "key": {
-    "A": {
-      "item": "minecraft:clay_ball"
-    },
-    "B": {
-      "tag": "c:dyes/black"
-    }
+    "A": "minecraft:clay_ball",
+    "B": "#c:dyes/black"
   },
   "result": {
     "id": "just_poker:black_casino_chip",

@@ -5,12 +5,8 @@
     "P"
   ],
   "key": {
-    "P": {
-      "tag" : "minecraft:planks"
-    },
-    "W": {
-      "item": "minecraft:green_carpet"
-    }
+    "P": "#minecraft:planks",
+    "W": "minecraft:green_carpet"
   },
   "result": {
     "id": "just_poker:casino_table",

@@ -7,12 +7,8 @@
     "AAA"
   ],
   "key": {
-    "A": {
-      "item": "minecraft:paper"
-    },
-    "B": {
-      "item": "minecraft:black_dye"
-    }
+    "A": "minecraft:paper",
+    "B": "minecraft:black_dye"
   },
   "result": {
     "id": "just_poker:black_card_deck",
