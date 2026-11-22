@@ -47,6 +47,10 @@ public class ChipEntity extends EntityBase {
 
     public void setSize(byte size) {
         assert 0 <= size && size <= MAX_SIZE;
+        if (size == 0) {
+            remove(RemovalReason.DISCARDED);
+            return;
+        }
         entityData.set(SIZE, size);
         refreshDimensions();
         setCustomName(Component.literal(String.valueOf(size)));
@@ -102,15 +106,6 @@ public class ChipEntity extends EntityBase {
         }
 
         return false;
-    }
-
-    @Override
-    public void tick() {
-        super.tick();
-
-        if (getSize() <= 0) {
-            remove(RemovalReason.DISCARDED);
-        }
     }
 
     @Override
