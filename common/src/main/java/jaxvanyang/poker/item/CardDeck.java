@@ -40,7 +40,7 @@ public class CardDeck extends Item {
         if (data == null) {
             deck = newSortedDeck();
         } else {
-            deck = data.copyTag().getByteArray("deck");
+            deck = data.copyTag().getByteArray("deck").get();
         }
 
         return deck;

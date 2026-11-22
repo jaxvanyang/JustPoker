@@ -46,7 +46,7 @@ public class Card extends Item {
     }
 
     public static byte getColor(ItemStack stack) {
-        return stack.get(DataComponents.CUSTOM_DATA).copyTag().getByte("color");
+        return stack.get(DataComponents.CUSTOM_DATA).copyTag().getByte("color").get();
     }
 
     public static int getColorCode(byte color) {

@@ -84,8 +84,8 @@ public class EntityBase extends Entity {
 
     @Override
     protected void readAdditionalSaveData(CompoundTag compoundTag) {
-        setColor(compoundTag.getByte("color"));
-        setRotation(compoundTag.getFloat("rotation"));
+        setColor(compoundTag.getByte("color").get());
+        setRotation(compoundTag.getFloat("rotation").get());
     }
 
     @Override

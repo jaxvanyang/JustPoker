@@ -120,7 +120,7 @@ public class CardEntity extends EntityBase {
     @Override
     protected void readAdditionalSaveData(CompoundTag compoundTag) {
         super.readAdditionalSaveData(compoundTag);
-        setCard(compoundTag.getByte("card"));
+        setCard(compoundTag.getByte("card").get());
     }
 
     @Override

@@ -164,7 +164,7 @@ public class CardDeckEntity extends EntityBase {
     @Override
     protected void readAdditionalSaveData(CompoundTag compoundTag) {
         super.readAdditionalSaveData(compoundTag);
-        setDeck(compoundTag.getByteArray("deck"));
+        setDeck(compoundTag.getByteArray("deck").get());
     }
 
     @Override

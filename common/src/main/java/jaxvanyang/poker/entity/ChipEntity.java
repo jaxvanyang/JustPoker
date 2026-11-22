@@ -130,7 +130,7 @@ public class ChipEntity extends EntityBase {
     @Override
     protected void readAdditionalSaveData(CompoundTag compoundTag) {
         super.readAdditionalSaveData(compoundTag);
-        setSize(compoundTag.getByte("size"));
+        setSize(compoundTag.getByte("size").get());
     }
 
     @Override
