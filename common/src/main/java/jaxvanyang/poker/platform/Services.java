@@ -1,9 +1,10 @@
 package jaxvanyang.poker.platform;
 
-import jaxvanyang.poker.Constants;
 import jaxvanyang.poker.platform.services.IPlatformHelper;
 
 import java.util.ServiceLoader;
+
+import static jaxvanyang.poker.Common.LOG;
 
 // Service loaders are a built-in Java feature that allow us to locate implementations of an interface that vary from one
 // environment to another. In the context of MultiLoader we use this feature to access a mock API in the common code that
@@ -24,7 +25,7 @@ public class Services {
         final T loadedService = ServiceLoader.load(clazz)
                 .findFirst()
                 .orElseThrow(() -> new NullPointerException("Failed to load service for " + clazz.getName()));
-        Constants.LOG.debug("Loaded {} for service {}", loadedService, clazz);
+        LOG.debug("Loaded {} for service {}", loadedService, clazz);
         return loadedService;
     }
 }

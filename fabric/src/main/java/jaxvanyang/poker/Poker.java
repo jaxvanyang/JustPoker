@@ -30,7 +30,6 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import java.util.function.Function;
 
 import static jaxvanyang.poker.Common.*;
-import static jaxvanyang.poker.Constants.MOD_ID;
 
 public class Poker implements ModInitializer {
     public static Block CASINO_TABLE;

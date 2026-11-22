@@ -34,8 +34,8 @@ import net.neoforged.neoforge.registries.*;
 
 import java.util.function.Supplier;
 
+import static jaxvanyang.poker.Common.MOD_ID;
 import static jaxvanyang.poker.Common.keyOfEntity;
-import static jaxvanyang.poker.Constants.MOD_ID;
 
 @Mod(MOD_ID)
 public class Poker {
