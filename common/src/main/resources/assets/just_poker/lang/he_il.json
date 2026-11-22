@@ -1,7 +1,9 @@
 {
   "itemGroup.just_poker": "פוקר",
   "block.just_poker.casino_table": "שולחן קזינו",
+  "item.just_poker.casino_table": "שולחן קזינו",
   "block.just_poker.casino_chair": "כיסא קזינו",
+  "item.just_poker.casino_chair": "כיסא קזינו",
   "item.just_poker.black_card_deck": "חפיסה שחורה",
   "item.just_poker.blue_card_deck": "חפיסה כחולה",
   "item.just_poker.pink_card_deck": "חפיסה ורודה",

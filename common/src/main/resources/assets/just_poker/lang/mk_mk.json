@@ -1,7 +1,9 @@
 {
   "itemGroup.just_poker": "Покер",
   "block.just_poker.casino_table": "Казино маса",
+  "item.just_poker.casino_table": "Казино маса",
   "block.just_poker.casino_chair": "Казино столица",
+  "item.just_poker.casino_chair": "Казино столица",
   "item.just_poker.black_card_deck": "Црн шпил",
   "item.just_poker.blue_card_deck": "Син шпил",
   "item.just_poker.pink_card_deck": "Розов шпил",

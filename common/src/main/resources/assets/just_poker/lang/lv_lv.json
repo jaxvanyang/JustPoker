@@ -1,7 +1,9 @@
 {
   "itemGroup.just_poker": "Pokers",
   "block.just_poker.casino_table": "Kazino galds",
+  "item.just_poker.casino_table": "Kazino galds",
   "block.just_poker.casino_chair": "Kazino krēsls",
+  "item.just_poker.casino_chair": "Kazino krēsls",
   "item.just_poker.black_card_deck": "Melns kāršu komplekts",
   "item.just_poker.blue_card_deck": "Zils kāršu komplekts",
   "item.just_poker.pink_card_deck": "Rozs kāršu komplekts",

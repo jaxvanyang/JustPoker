@@ -1,7 +1,9 @@
 {
   "itemGroup.just_poker": "Poker",
   "block.just_poker.casino_table": "Casino bord",
+  "item.just_poker.casino_table": "Casino bord",
   "block.just_poker.casino_chair": "Casino stol",
+  "item.just_poker.casino_chair": "Casino stol",
   "item.just_poker.black_card_deck": "Sort kortbunke",
   "item.just_poker.blue_card_deck": "Blå kortbunke",
   "item.just_poker.pink_card_deck": "Lyserød kortbunke",

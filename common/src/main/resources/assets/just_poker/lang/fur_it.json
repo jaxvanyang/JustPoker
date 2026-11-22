@@ -1,7 +1,9 @@
 {
   "itemGroup.just_poker": "Poker",
   "block.just_poker.casino_table": "Taule di casinò",
+  "item.just_poker.casino_table": "Taule di casinò",
   "block.just_poker.casino_chair": "Cadree di casinò",
+  "item.just_poker.casino_chair": "Cadree di casinò",
   "item.just_poker.black_card_deck": "Mazz di cjarts neri",
   "item.just_poker.blue_card_deck": "Mazz di cjarts blu",
   "item.just_poker.pink_card_deck": "Mazz di cjarts rose",

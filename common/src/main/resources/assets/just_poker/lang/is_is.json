@@ -1,7 +1,9 @@
 {
   "itemGroup.just_poker": "Póker",
   "block.just_poker.casino_table": "Spilavíti borð",
+  "item.just_poker.casino_table": "Spilavíti borð",
   "block.just_poker.casino_chair": "Spilavíti stóll",
+  "item.just_poker.casino_chair": "Spilavíti stóll",
   "item.just_poker.black_card_deck": "Svartur spilastokkur",
   "item.just_poker.blue_card_deck": "Blár spilastokkur",
   "item.just_poker.pink_card_deck": "Bleikur spilastokkur",

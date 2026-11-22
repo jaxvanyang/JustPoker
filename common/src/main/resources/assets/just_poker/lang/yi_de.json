@@ -1,7 +1,9 @@
 {
   "itemGroup.just_poker": "פּאָקער",
   "block.just_poker.casino_table": "קאַזינאָ טיש",
+  "item.just_poker.casino_table": "קאַזינאָ טיש",
   "block.just_poker.casino_chair": "קאַזינאָ שטול",
+  "item.just_poker.casino_chair": "קאַזינאָ שטול",
   "item.just_poker.black_card_deck": "שוואַרצע קאַרטסטאָק",
   "item.just_poker.blue_card_deck": "בלויע קאַרטסטאָק",
   "item.just_poker.pink_card_deck": "ראָזע קאַרטסטאָק",

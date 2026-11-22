@@ -1,7 +1,9 @@
 {
   "itemGroup.just_poker": "Pocer",
   "block.just_poker.casino_table": "Bwrdd casino",
+  "item.just_poker.casino_table": "Bwrdd casino",
   "block.just_poker.casino_chair": "Cadair casino",
+  "item.just_poker.casino_chair": "Cadair casino",
   "item.just_poker.black_card_deck": "Dec cards du",
   "item.just_poker.blue_card_deck": "Dec cards glas",
   "item.just_poker.pink_card_deck": "Dec cards pinc",

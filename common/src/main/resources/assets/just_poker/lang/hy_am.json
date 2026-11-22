@@ -1,7 +1,9 @@
 {
   "itemGroup.just_poker": "Փոկեր",
   "block.just_poker.casino_table": "Կազինո սեղան",
+  "item.just_poker.casino_table": "Կազինո սեղան",
   "block.just_poker.casino_chair": "Կազինո աթոռ",
+  "item.just_poker.casino_chair": "Կազինո աթոռ",
   "item.just_poker.black_card_deck": "Սև քարտերի տախտակ",
   "item.just_poker.blue_card_deck": "Կապույտ քարտերի տախտակ",
   "item.just_poker.pink_card_deck": "Վարդագույն քարտերի տախտակ",

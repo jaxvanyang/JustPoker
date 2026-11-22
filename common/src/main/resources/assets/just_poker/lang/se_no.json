@@ -1,7 +1,9 @@
 {
   "itemGroup.just_poker": "Poker",
   "block.just_poker.casino_table": "Kasinobeavdi",
+  "item.just_poker.casino_table": "Kasinobeavdi",
   "block.just_poker.casino_chair": "Kasinosstuolu",
+  "item.just_poker.casino_chair": "Kasinosstuolu",
   "item.just_poker.black_card_deck": "Čáhppat goartestubbo",
   "item.just_poker.blue_card_deck": "Alit goartestubbo",
   "item.just_poker.pink_card_deck": "Roas goartestubbo",

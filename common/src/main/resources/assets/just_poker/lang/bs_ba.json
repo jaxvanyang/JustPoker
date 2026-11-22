@@ -1,7 +1,9 @@
 {
   "itemGroup.just_poker": "Poker",
   "block.just_poker.casino_table": "Kasinski sto",
+  "item.just_poker.casino_table": "Kasinski sto",
   "block.just_poker.casino_chair": "Kasinska stolica",
+  "item.just_poker.casino_chair": "Kasinska stolica",
   "item.just_poker.black_card_deck": "Crni špil",
   "item.just_poker.blue_card_deck": "Plavi špil",
   "item.just_poker.pink_card_deck": "Ružičasti špil",

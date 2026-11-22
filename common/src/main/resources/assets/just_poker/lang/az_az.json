@@ -1,7 +1,9 @@
 {
   "itemGroup.just_poker": "Poker",
   "block.just_poker.casino_table": "Kazino masası",
+  "item.just_poker.casino_table": "Kazino masası",
   "block.just_poker.casino_chair": "Kazino stulu",
+  "item.just_poker.casino_chair": "Kazino stulu",
   "item.just_poker.black_card_deck": "Qara kart dəsti",
   "item.just_poker.blue_card_deck": "Mavi kart dəsti",
   "item.just_poker.pink_card_deck": "Çəhrayı kart dəsti",

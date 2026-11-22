@@ -1,7 +1,9 @@
 {
   "itemGroup.just_poker": "Poker",
   "block.just_poker.casino_table": "Kasino-Tafel",
+  "item.just_poker.casino_table": "Kasino-Tafel",
   "block.just_poker.casino_chair": "Kasino-Stohl",
+  "item.just_poker.casino_chair": "Kasino-Stohl",
   "item.just_poker.black_card_deck": "Swart Kaatspack",
   "item.just_poker.blue_card_deck": "Blau Kaatspack",
   "item.just_poker.pink_card_deck": "Rosa Kaatspack",

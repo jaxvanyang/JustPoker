@@ -1,7 +1,9 @@
 {
   "itemGroup.just_poker": "Poker",
   "block.just_poker.casino_table": "Stół kasynowy",
+  "item.just_poker.casino_table": "Stół kasynowy",
   "block.just_poker.casino_chair": "Krzesło kasynowe",
+  "item.just_poker.casino_chair": "Krzesło kasynowe",
   "item.just_poker.black_card_deck": "Czarna talia",
   "item.just_poker.blue_card_deck": "Niebieska talia",
   "item.just_poker.pink_card_deck": "Różowa talia",

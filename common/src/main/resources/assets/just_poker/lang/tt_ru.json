@@ -1,7 +1,9 @@
 {
   "itemGroup.just_poker": "Покер",
   "block.just_poker.casino_table": "Казино өстәл",
+  "item.just_poker.casino_table": "Казино өстәл",
   "block.just_poker.casino_chair": "Казино урыны",
+  "item.just_poker.casino_chair": "Казино урыны",
   "item.just_poker.black_card_deck": "Кара карта колодасы",
   "item.just_poker.blue_card_deck": "Зәңгәр карта колодасы",
   "item.just_poker.pink_card_deck": "Алсу карта колодасы",

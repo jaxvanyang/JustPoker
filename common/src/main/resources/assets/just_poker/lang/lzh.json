@@ -1,7 +1,9 @@
 {
   "itemGroup.just_poker": "撲克",
   "block.just_poker.casino_table": "賭桌",
+  "item.just_poker.casino_table": "賭桌",
   "block.just_poker.casino_chair": "賭椅",
+  "item.just_poker.casino_chair": "賭椅",
   "item.just_poker.black_card_deck": "玄牌囊",
   "item.just_poker.blue_card_deck": "青牌囊",
   "item.just_poker.pink_card_deck": "粉牌囊",

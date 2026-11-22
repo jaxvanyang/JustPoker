@@ -1,7 +1,9 @@
 {
   "itemGroup.just_poker": "Poker",
   "block.just_poker.casino_table": "Kasino-bord",
+  "item.just_poker.casino_table": "Kasino-bord",
   "block.just_poker.casino_chair": "Kasino-stol",
+  "item.just_poker.casino_chair": "Kasino-stol",
   "item.just_poker.black_card_deck": "Svart kortstokk",
   "item.just_poker.blue_card_deck": "Blå kortstokk",
   "item.just_poker.pink_card_deck": "Rosa kortstokk",

@@ -1,7 +1,9 @@
 {
   "itemGroup.just_poker": "ポーカー",
   "block.just_poker.casino_table": "カジノテーブル",
+  "item.just_poker.casino_table": "カジノテーブル",
   "block.just_poker.casino_chair": "カジノチェア",
+  "item.just_poker.casino_chair": "カジノチェア",
   "item.just_poker.black_card_deck": "黒のカードデッキ",
   "item.just_poker.blue_card_deck": "青のカードデッキ",
   "item.just_poker.pink_card_deck": "ピンクのカードデッキ",

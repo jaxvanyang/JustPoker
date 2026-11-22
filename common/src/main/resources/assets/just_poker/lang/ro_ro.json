@@ -1,7 +1,9 @@
 {
   "itemGroup.just_poker": "Poker",
   "block.just_poker.casino_table": "Masă de cazino",
+  "item.just_poker.casino_table": "Masă de cazino",
   "block.just_poker.casino_chair": "Scaun de cazino",
+  "item.just_poker.casino_chair": "Scaun de cazino",
   "item.just_poker.black_card_deck": "Pachet de cărți negru",
   "item.just_poker.blue_card_deck": "Pachet de cărți albastru",
   "item.just_poker.pink_card_deck": "Pachet de cărți roz",

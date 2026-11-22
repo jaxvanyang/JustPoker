@@ -1,7 +1,9 @@
 {
   "itemGroup.just_poker": "Poker",
   "block.just_poker.casino_table": "Bòrd casino",
+  "item.just_poker.casino_table": "Bòrd casino",
   "block.just_poker.casino_chair": "Cathair casino",
+  "item.just_poker.casino_chair": "Cathair casino",
   "item.just_poker.black_card_deck": "Deic chairtean dhubh",
   "item.just_poker.blue_card_deck": "Deic chairtean ghorm",
   "item.just_poker.pink_card_deck": "Deic chairtean pinc",

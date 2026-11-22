@@ -1,7 +1,9 @@
 {
   "itemGroup.just_poker": "Pokeri",
   "block.just_poker.casino_table": "Kasinopöytä",
+  "item.just_poker.casino_table": "Kasinopöytä",
   "block.just_poker.casino_chair": "Kasinotuoli",
+  "item.just_poker.casino_chair": "Kasinotuoli",
   "item.just_poker.black_card_deck": "Mustat kortit",
   "item.just_poker.blue_card_deck": "Siniset kortit",
   "item.just_poker.pink_card_deck": "Vaaleanpunaiset kortit",

@@ -1,7 +1,9 @@
 {
   "itemGroup.just_poker": "ڤوکير",
   "block.just_poker.casino_table": "ميجا كاسينو",
+  "item.just_poker.casino_table": "ميجا كاسينو",
   "block.just_poker.casino_chair": "کورسي كاسينو",
+  "item.just_poker.casino_chair": "کورسي كاسينو",
   "item.just_poker.black_card_deck": "دک کارت هيتام",
   "item.just_poker.blue_card_deck": "دک کارت بيرو",
   "item.just_poker.pink_card_deck": "دک کارت ميره مودا",

@@ -1,7 +1,9 @@
 {
   "itemGroup.just_poker": "Pócar",
   "block.just_poker.casino_table": "Bord ceasaíneachta",
+  "item.just_poker.casino_table": "Bord ceasaíneachta",
   "block.just_poker.casino_chair": "Cathaoir cheasaíneachta",
+  "item.just_poker.casino_chair": "Cathaoir cheasaíneachta",
   "item.just_poker.black_card_deck": "Deic dhubh cártaí",
   "item.just_poker.blue_card_deck": "Deic ghorm cártaí",
   "item.just_poker.pink_card_deck": "Deic bhándearg cártaí",

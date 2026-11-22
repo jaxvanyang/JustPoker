@@ -1,7 +1,9 @@
 {
   "itemGroup.just_poker": "Poker",
   "block.just_poker.casino_table": "Tabili kasino",
+  "item.just_poker.casino_table": "Tabili kasino",
   "block.just_poker.casino_chair": "Aaga kasino",
+  "item.just_poker.casino_chair": "Aaga kasino",
   "item.just_poker.black_card_deck": "Akójọpọ̀ káàdì dúdú",
   "item.just_poker.blue_card_deck": "Akójọpọ̀ káàdì búlù",
   "item.just_poker.pink_card_deck": "Akójọpọ̀ káàdì pinki",

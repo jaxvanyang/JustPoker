@@ -1,7 +1,9 @@
 {
   "itemGroup.just_poker": "Poker",
   "block.just_poker.casino_table": "Kasínový stůl",
+  "item.just_poker.casino_table": "Kasínový stůl",
   "block.just_poker.casino_chair": "Kasínová židle",
+  "item.just_poker.casino_chair": "Kasínová židle",
   "item.just_poker.black_card_deck": "Černý balíček karet",
   "item.just_poker.blue_card_deck": "Modrý balíček karet",
   "item.just_poker.pink_card_deck": "Růžový balíček karet",

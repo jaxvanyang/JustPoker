@@ -1,7 +1,9 @@
 {
   "itemGroup.just_poker": "Poker",
   "block.just_poker.casino_table": "Kasinomezalli",
+  "item.just_poker.casino_table": "Kasinomezalli",
   "block.just_poker.casino_chair": "Kasinotepetl",
+  "item.just_poker.casino_chair": "Kasinotepetl",
   "item.just_poker.black_card_deck": "Tliltik amatlachiyal",
   "item.just_poker.blue_card_deck": "Yiyauhcamo amatlachiyal",
   "item.just_poker.pink_card_deck": "Camohtic amatlachiyal",

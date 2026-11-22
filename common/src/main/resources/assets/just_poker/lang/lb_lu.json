@@ -1,7 +1,9 @@
 {
   "itemGroup.just_poker": "Poker",
   "block.just_poker.casino_table": "Casino Dësch",
+  "item.just_poker.casino_table": "Casino Dësch",
   "block.just_poker.casino_chair": "Casino Stull",
+  "item.just_poker.casino_chair": "Casino Stull",
   "item.just_poker.black_card_deck": "Schwaarzt Kaartepack",
   "item.just_poker.blue_card_deck": "Blot Kaartepack",
   "item.just_poker.pink_card_deck": "Rosafaarwer Kaartepack",

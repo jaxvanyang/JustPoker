@@ -1,7 +1,9 @@
 {
   "itemGroup.just_poker": "البوكر",
   "block.just_poker.casino_table": "طاولة كازينو",
+  "item.just_poker.casino_table": "طاولة كازينو",
   "block.just_poker.casino_chair": "كرسي كازينو",
+  "item.just_poker.casino_chair": "كرسي كازينو",
   "item.just_poker.black_card_deck": "مجموعة بطاقات سوداء",
   "item.just_poker.blue_card_deck": "مجموعة بطاقات زرقاء",
   "item.just_poker.pink_card_deck": "مجموعة بطاقات وردية",

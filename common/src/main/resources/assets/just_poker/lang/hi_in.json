@@ -1,7 +1,9 @@
 {
   "itemGroup.just_poker": "पोकर",
   "block.just_poker.casino_table": "कैसीनो टेबल",
+  "item.just_poker.casino_table": "कैसीनो टेबल",
   "block.just_poker.casino_chair": "कैसीनो कुर्सी",
+  "item.just_poker.casino_chair": "कैसीनो कुर्सी",
   "item.just_poker.black_card_deck": "काला कार्ड डेक",
   "item.just_poker.blue_card_deck": "नीला कार्ड डेक",
   "item.just_poker.pink_card_deck": "गुलाबी कार्ड डेक",

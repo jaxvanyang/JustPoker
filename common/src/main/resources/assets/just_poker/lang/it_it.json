@@ -1,7 +1,9 @@
 {
   "itemGroup.just_poker": "Poker",
   "block.just_poker.casino_table": "Tavolo da casinò",
+  "item.just_poker.casino_table": "Tavolo da casinò",
   "block.just_poker.casino_chair": "Sedia da casinò",
+  "item.just_poker.casino_chair": "Sedia da casinò",
   "item.just_poker.black_card_deck": "Mazzo nero",
   "item.just_poker.blue_card_deck": "Mazzo blu",
   "item.just_poker.pink_card_deck": "Mazzo rosa",

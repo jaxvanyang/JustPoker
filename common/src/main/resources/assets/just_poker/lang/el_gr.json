@@ -1,7 +1,9 @@
 {
   "itemGroup.just_poker": "Πόκερ",
   "block.just_poker.casino_table": "Τραπέζι καζίνο",
+  "item.just_poker.casino_table": "Τραπέζι καζίνο",
   "block.just_poker.casino_chair": "Καρέκλα καζίνο",
+  "item.just_poker.casino_chair": "Καρέκλα καζίνο",
   "item.just_poker.black_card_deck": "Μαύρη τράπουλα",
   "item.just_poker.blue_card_deck": "Μπλε τράπουλα",
   "item.just_poker.pink_card_deck": "Ροζ τράπουλα",

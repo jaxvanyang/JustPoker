@@ -1,7 +1,9 @@
 {
   "itemGroup.just_poker": "Poker",
   "block.just_poker.casino_table": "Mesa ng casino",
+  "item.just_poker.casino_table": "Mesa ng casino",
   "block.just_poker.casino_chair": "Silya ng casino",
+  "item.just_poker.casino_chair": "Silya ng casino",
   "item.just_poker.black_card_deck": "Itim na Baraha",
   "item.just_poker.blue_card_deck": "Asul na Baraha",
   "item.just_poker.pink_card_deck": "Rosas na Baraha",

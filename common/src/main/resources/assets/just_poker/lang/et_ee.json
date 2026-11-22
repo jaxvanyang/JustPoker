@@ -1,7 +1,9 @@
 {
   "itemGroup.just_poker": "Pokker",
   "block.just_poker.casino_table": "Kasiinolaud",
+  "item.just_poker.casino_table": "Kasiinolaud",
   "block.just_poker.casino_chair": "Kasiinotool",
+  "item.just_poker.casino_chair": "Kasiinotool",
   "item.just_poker.black_card_deck": "Must kaardipakk",
   "item.just_poker.blue_card_deck": "Sinine kaardipakk",
   "item.just_poker.pink_card_deck": "Roosa kaardipakk",

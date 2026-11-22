@@ -1,7 +1,9 @@
 {
   "itemGroup.just_poker": "ພອກເກີ",
   "block.just_poker.casino_table": "ໂຕະຄາຊິໂນ",
+  "item.just_poker.casino_table": "ໂຕະຄາຊິໂນ",
   "block.just_poker.casino_chair": "ຕັ່ງຄາຊິໂນ",
+  "item.just_poker.casino_chair": "ຕັ່ງຄາຊິໂນ",
   "item.just_poker.black_card_deck": "ຊຸດໄພສີດຳ",
   "item.just_poker.blue_card_deck": "ຊຸດໄພສີຟ້າ",
   "item.just_poker.pink_card_deck": "ຊຸດໄພສີບົວ",

@@ -1,7 +1,9 @@
 {
   "itemGroup.just_poker": "Poker",
   "block.just_poker.casino_table": "Mensa casini",
+  "item.just_poker.casino_table": "Mensa casini",
   "block.just_poker.casino_chair": "Sella casini",
+  "item.just_poker.casino_chair": "Sella casini",
   "item.just_poker.black_card_deck": "Fasciculus nigri ludus",
   "item.just_poker.blue_card_deck": "Fasciculus caerulei ludus",
   "item.just_poker.pink_card_deck": "Fasciculus rosei ludus",

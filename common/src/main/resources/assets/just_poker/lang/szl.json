@@ -1,7 +1,9 @@
 {
   "itemGroup.just_poker": "Poker",
   "block.just_poker.casino_table": "Kasyno stół",
+  "item.just_poker.casino_table": "Kasyno stół",
   "block.just_poker.casino_chair": "Kasyno krzesło",
+  "item.just_poker.casino_chair": "Kasyno krzesło",
   "item.just_poker.black_card_deck": "Czorny balet kart",
   "item.just_poker.blue_card_deck": "Mody balet kart",
   "item.just_poker.pink_card_deck": "Růżowy balet kart",

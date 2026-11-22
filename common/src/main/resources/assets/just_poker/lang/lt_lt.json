@@ -1,7 +1,9 @@
 {
   "itemGroup.just_poker": "Pokeris",
   "block.just_poker.casino_table": "Kazino stalas",
+  "item.just_poker.casino_table": "Kazino stalas",
   "block.just_poker.casino_chair": "Kazino kėdė",
+  "item.just_poker.casino_chair": "Kazino kėdė",
   "item.just_poker.black_card_deck": "Juodas kortų kaladė",
   "item.just_poker.blue_card_deck": "Mėlynas kortų kaladė",
   "item.just_poker.pink_card_deck": "Rausvas kortų kaladė",

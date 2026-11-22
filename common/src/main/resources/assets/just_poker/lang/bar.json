@@ -1,7 +1,9 @@
 {
   "itemGroup.just_poker": "Poker",
   "block.just_poker.casino_table": "Casino-Tisch",
+  "item.just_poker.casino_table": "Casino-Tisch",
   "block.just_poker.casino_chair": "Casino-Sessel",
+  "item.just_poker.casino_chair": "Casino-Sessel",
   "item.just_poker.black_card_deck": "Schwoazs Kadnspui",
   "item.just_poker.blue_card_deck": "Blous Kadnspui",
   "item.just_poker.pink_card_deck": "Roasa Kadnspui",

@@ -1,7 +1,9 @@
 {
   "itemGroup.just_poker": "Poker",
   "block.just_poker.casino_table": "Meja Kasino",
+  "item.just_poker.casino_table": "Meja Kasino",
   "block.just_poker.casino_chair": "Kerusi Kasino",
+  "item.just_poker.casino_chair": "Kerusi Kasino",
   "item.just_poker.black_card_deck": "Dek Kad Hitam",
   "item.just_poker.blue_card_deck": "Dek Kad Biru",
   "item.just_poker.pink_card_deck": "Dek Kad Merah Jambu",

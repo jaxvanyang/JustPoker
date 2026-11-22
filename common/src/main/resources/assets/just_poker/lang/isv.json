@@ -1,7 +1,9 @@
 {
   "itemGroup.just_poker": "Poker",
   "block.just_poker.casino_table": "Kazino-stol",
+  "item.just_poker.casino_table": "Kazino-stol",
   "block.just_poker.casino_chair": "Kazino-stolica",
+  "item.just_poker.casino_chair": "Kazino-stolica",
   "item.just_poker.black_card_deck": "Črny paket kart",
   "item.just_poker.blue_card_deck": "Sinji paket kart",
   "item.just_poker.pink_card_deck": "Rožovy paket kart",

@@ -1,7 +1,9 @@
 {
   "itemGroup.just_poker": "Покер",
   "block.just_poker.casino_table": "Казино ширээ",
+  "item.just_poker.casino_table": "Казино ширээ",
   "block.just_poker.casino_chair": "Казино сандал",
+  "item.just_poker.casino_chair": "Казино сандал",
   "item.just_poker.black_card_deck": "Хар хөзрийн багц",
   "item.just_poker.blue_card_deck": "Цэнхэр хөзрийн багц",
   "item.just_poker.pink_card_deck": "Ягаан хөзрийн багц",

@@ -1,7 +1,9 @@
 {
   "itemGroup.just_poker": "Pòquer",
   "block.just_poker.casino_table": "Taula de casinò",
+  "item.just_poker.casino_table": "Taula de casinò",
   "block.just_poker.casino_chair": "Cadiera de casinò",
+  "item.just_poker.casino_chair": "Cadiera de casinò",
   "item.just_poker.black_card_deck": "Paquet de cartas negre",
   "item.just_poker.blue_card_deck": "Paquet de cartas blau",
   "item.just_poker.pink_card_deck": "Paquet de cartas ròse",

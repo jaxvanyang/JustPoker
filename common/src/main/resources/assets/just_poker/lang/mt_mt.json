@@ -1,7 +1,9 @@
 {
   "itemGroup.just_poker": "Poker",
   "block.just_poker.casino_table": "Mejda tal-każinò",
+  "item.just_poker.casino_table": "Mejda tal-każinò",
   "block.just_poker.casino_chair": "Siġġu tal-każinò",
+  "item.just_poker.casino_chair": "Siġġu tal-każinò",
   "item.just_poker.black_card_deck": "Mazz iswed tal-karti",
   "item.just_poker.blue_card_deck": "Mazz blu tal-karti",
   "item.just_poker.pink_card_deck": "Mazz roża tal-karti",

@@ -1,7 +1,9 @@
 {
   "itemGroup.just_poker": "پوکر",
   "block.just_poker.casino_table": "میز کازینو",
+  "item.just_poker.casino_table": "میز کازینو",
   "block.just_poker.casino_chair": "صندلی کازینو",
+  "item.just_poker.casino_chair": "صندلی کازینو",
   "item.just_poker.black_card_deck": "دسته کارت مشکی",
   "item.just_poker.blue_card_deck": "دسته کارت آبی",
   "item.just_poker.pink_card_deck": "دسته کارت صورتی",

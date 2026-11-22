@@ -1,7 +1,9 @@
 {
   "itemGroup.just_poker": "Poker",
   "block.just_poker.casino_table": "Casinotafel",
+  "item.just_poker.casino_table": "Casinotafel",
   "block.just_poker.casino_chair": "Casinostoal",
+  "item.just_poker.casino_chair": "Casinostoal",
   "item.just_poker.black_card_deck": "Zwart kaartspel",
   "item.just_poker.blue_card_deck": "Blauw kaartspel",
   "item.just_poker.pink_card_deck": "Roze kaartspel",

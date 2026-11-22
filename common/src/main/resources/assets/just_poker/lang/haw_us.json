@@ -1,7 +1,9 @@
 {
   "itemGroup.just_poker": "Pōkā",
   "block.just_poker.casino_table": "Pākaukau casino",
+  "item.just_poker.casino_table": "Pākaukau casino",
   "block.just_poker.casino_chair": "Noho casino",
+  "item.just_poker.casino_chair": "Noho casino",
   "item.just_poker.black_card_deck": "Pūʻulu kāleka ʻeleʻele",
   "item.just_poker.blue_card_deck": "Pūʻulu kāleka uliuli",
   "item.just_poker.pink_card_deck": "Pūʻulu kāleka ʻulaʻula-ʻula",

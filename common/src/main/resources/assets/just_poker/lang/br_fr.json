@@ -1,7 +1,9 @@
 {
   "itemGroup.just_poker": "Poker",
   "block.just_poker.casino_table": "Taol casino",
+  "item.just_poker.casino_table": "Taol casino",
   "block.just_poker.casino_chair": "Kador casino",
+  "item.just_poker.casino_chair": "Kador casino",
   "item.just_poker.black_card_deck": "Pakad kartennoù du",
   "item.just_poker.blue_card_deck": "Pakad kartennoù glas",
   "item.just_poker.pink_card_deck": "Pakad kartennoù roz",

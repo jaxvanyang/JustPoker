@@ -1,7 +1,9 @@
 {
   "itemGroup.just_poker": "Покер",
   "block.just_poker.casino_table": "Гульнявы стол",
+  "item.just_poker.casino_table": "Гульнявы стол",
   "block.just_poker.casino_chair": "Гульнявы крэсла",
+  "item.just_poker.casino_chair": "Гульнявы крэсла",
   "item.just_poker.black_card_deck": "Чорная калода",
   "item.just_poker.blue_card_deck": "Сіняя калода",
   "item.just_poker.pink_card_deck": "Ружовая калода",

@@ -1,7 +1,9 @@
 {
   "itemGroup.just_poker": "Poker",
   "block.just_poker.casino_table": "Kazino-tablo",
+  "item.just_poker.casino_table": "Kazino-tablo",
   "block.just_poker.casino_chair": "Kazino-sedio",
+  "item.just_poker.casino_chair": "Kazino-sedio",
   "item.just_poker.black_card_deck": "Nigra kartaro",
   "item.just_poker.blue_card_deck": "Blua kartaro",
   "item.just_poker.pink_card_deck": "Rozea kartaro",

@@ -1,7 +1,9 @@
 {
   "itemGroup.just_poker": "Poker",
   "block.just_poker.casino_table": "Kazinska miza",
+  "item.just_poker.casino_table": "Kazinska miza",
   "block.just_poker.casino_chair": "Kazinski stol",
+  "item.just_poker.casino_chair": "Kazinski stol",
   "item.just_poker.black_card_deck": "Črn komplet kart",
   "item.just_poker.blue_card_deck": "Moder komplet kart",
   "item.just_poker.pink_card_deck": "Rožnat komplet kart",

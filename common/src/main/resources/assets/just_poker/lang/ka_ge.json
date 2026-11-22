@@ -1,7 +1,9 @@
 {
   "itemGroup.just_poker": "პოკერი",
   "block.just_poker.casino_table": "კაზინოს მაგიდა",
+  "item.just_poker.casino_table": "კაზინოს მაგიდა",
   "block.just_poker.casino_chair": "კაზინოს სკამი",
+  "item.just_poker.casino_chair": "კაზინოს სკამი",
   "item.just_poker.black_card_deck": "შავი კარტების პაკეტი",
   "item.just_poker.blue_card_deck": "ლურჯი კარტების პაკეტი",
   "item.just_poker.pink_card_deck": "ვარდისფერი კარტების პაკეტი",

@@ -1,7 +1,9 @@
 {
   "itemGroup.just_poker": "போக்கர்",
   "block.just_poker.casino_table": "சூதாட்ட மேசை",
+  "item.just_poker.casino_table": "சூதாட்ட மேசை",
   "block.just_poker.casino_chair": "சூதாட்ட நாற்காலி",
+  "item.just_poker.casino_chair": "சூதாட்ட நாற்காலி",
   "item.just_poker.black_card_deck": "கருப்பு சீட்டு அட்டை",
   "item.just_poker.blue_card_deck": "நீல சீட்டு அட்டை",
   "item.just_poker.pink_card_deck": "இளஞ்சிவப்பு சீட்டு அட்டை",

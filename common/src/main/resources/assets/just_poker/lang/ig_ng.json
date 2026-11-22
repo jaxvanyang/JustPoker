@@ -1,7 +1,9 @@
 {
   "itemGroup.just_poker": "Poker",
   "block.just_poker.casino_table": "Tebụl casino",
+  "item.just_poker.casino_table": "Tebụl casino",
   "block.just_poker.casino_chair": "Oche casino",
+  "item.just_poker.casino_chair": "Oche casino",
   "item.just_poker.black_card_deck": "Nkwụaka kaadị ojii",
   "item.just_poker.blue_card_deck": "Nkwụaka kaadị bluu",
   "item.just_poker.pink_card_deck": "Nkwụaka kaadị pink",

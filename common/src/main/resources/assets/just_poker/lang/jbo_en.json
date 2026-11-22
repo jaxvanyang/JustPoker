@@ -1,7 +1,9 @@
 {
   "itemGroup.just_poker": "poker",
   "block.just_poker.casino_table": "kajypre jubme",
+  "item.just_poker.casino_table": "kajypre jubme",
   "block.just_poker.casino_chair": "kajypre stizu",
+  "item.just_poker.casino_chair": "kajypre stizu",
   "item.just_poker.black_card_deck": "xekri kartukina",
   "item.just_poker.blue_card_deck": "blabi kartukina",
   "item.just_poker.pink_card_deck": "penkrtali kartukina",

@@ -1,7 +1,9 @@
 {
   "itemGroup.just_poker": "โป๊กเกอร์",
   "block.just_poker.casino_table": "โต๊ะคาสิโน",
+  "item.just_poker.casino_table": "โต๊ะคาสิโน",
   "block.just_poker.casino_chair": "เก้าอี้คาสิโน",
+  "item.just_poker.casino_chair": "เก้าอี้คาสิโน",
   "item.just_poker.black_card_deck": "สำรับไพ่สีดำ",
   "item.just_poker.blue_card_deck": "สำรับไพ่สีฟ้า",
   "item.just_poker.pink_card_deck": "สำรับไพ่สีชมพู",
