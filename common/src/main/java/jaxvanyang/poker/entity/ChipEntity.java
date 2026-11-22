@@ -44,6 +44,7 @@ public class ChipEntity extends EntityBase {
     public void setSize(byte size) {
         assert 0 <= size && size <= MAX_SIZE;
         entityData.set(SIZE, size);
+        setCustomName(Component.literal(String.valueOf(size)));
     }
 
     @Override

@@ -7,6 +7,7 @@ import jaxvanyang.poker.item.Chip;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 
@@ -46,6 +47,21 @@ public class ChipRenderer extends EntityRenderer<ChipEntity> {
             poseStack.popPose();
         }
 
+        poseStack.popPose();
+    }
+
+    @Override
+    protected void renderNameTag(
+            ChipEntity entity,
+            Component displayName,
+            PoseStack poseStack,
+            MultiBufferSource bufferSource,
+            int packedLight,
+            float partialTick
+    ) {
+        poseStack.pushPose();
+        poseStack.translate(0, entity.getSize() * 0.01575, 0);
+        super.renderNameTag(entity, displayName, poseStack, bufferSource, packedLight, partialTick);
         poseStack.popPose();
     }
 
