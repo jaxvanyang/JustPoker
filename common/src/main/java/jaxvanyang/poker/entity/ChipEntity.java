@@ -7,6 +7,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
@@ -93,12 +94,12 @@ public class ChipEntity extends EntityBase {
     }
 
     @Override
-    public boolean hurt(DamageSource source, float amount) {
+    public boolean hurtServer(ServerLevel level, DamageSource source, float amount) {
         if (source.getEntity() instanceof Player player) {
-            if (!player.isCreative() && !level().isClientSide()) {
+            if (!player.isCreative()) {
                 ItemStack stack = Chip.newStack(getColor());
                 stack.setCount(getSize());
-                spawnStackAtEntity(level(), stack, player);
+                spawnStackAtEntity(level, stack, player);
             }
 
             remove(RemovalReason.DISCARDED);

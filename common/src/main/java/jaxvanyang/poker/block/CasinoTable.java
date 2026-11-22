@@ -2,9 +2,11 @@ package jaxvanyang.poker.block;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.ScheduledTickAccess;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -30,7 +32,7 @@ public class CasinoTable extends Block {
 
 
     public CasinoTable(Properties properties) {
-        super(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS));
+        super(properties);
 
         registerDefaultState(getStateDefinition().any()
                                      .setValue(NORTH, false)
@@ -61,16 +63,18 @@ public class CasinoTable extends Block {
     @Override
     protected BlockState updateShape(
             BlockState state,
-            Direction direction,
-            BlockState neighborState,
-            LevelAccessor level,
+            LevelReader level,
+            ScheduledTickAccess tickAccess,
             BlockPos pos,
-            BlockPos neighborPos
+            Direction direction,
+            BlockPos neighborPos,
+            BlockState neighborState,
+            RandomSource random
     ) {
         return getState(level, pos);
     }
 
-    private BlockState getState(LevelAccessor level, BlockPos pos) {
+    private BlockState getState(LevelReader level, BlockPos pos) {
         return defaultBlockState().setValue(NORTH, canConnectTo(level, pos, NORTH))
                 .setValue(EAST, canConnectTo(level, pos, EAST))
                 .setValue(SOUTH, canConnectTo(level, pos, SOUTH))
@@ -81,7 +85,7 @@ public class CasinoTable extends Block {
                 .setValue(SOUTHEAST, canConnectTo(level, pos, SOUTHEAST));
     }
 
-    private boolean canConnectTo(LevelAccessor level, BlockPos pos, BooleanProperty dir) {
+    private boolean canConnectTo(LevelReader level, BlockPos pos, BooleanProperty dir) {
         String dir_str = dir.toString();
         if (dir_str.contains("north")) {
             pos = pos.north();

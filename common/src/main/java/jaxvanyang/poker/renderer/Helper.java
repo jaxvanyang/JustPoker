@@ -18,7 +18,6 @@ public class Helper {
             int packedLight
     ) {
         poseStack.pushPose();
-
         poseStack.translate(dx, dy, dz);
         Minecraft.getInstance()
                 .getItemRenderer()
@@ -32,7 +31,6 @@ public class Helper {
                         null,
                         0
                 );
-
         poseStack.popPose();
     }
 }

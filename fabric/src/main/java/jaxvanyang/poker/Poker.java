@@ -16,6 +16,7 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
@@ -23,15 +24,17 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 
+import java.util.function.Function;
+
+import static jaxvanyang.poker.Common.*;
 import static jaxvanyang.poker.Constants.MOD_ID;
 
 public class Poker implements ModInitializer {
     public static Block CASINO_TABLE;
     public static Block CASINO_CHAIR;
-
-    public static Item CASINO_TABLE_ITEM;
-    public static Item CASINO_CHAIR_ITEM;
 
     public static Item BLACK_CARD_DECK;
     public static Item BLUE_CARD_DECK;
@@ -58,46 +61,38 @@ public class Poker implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        CommonClass.init();
+        Common.init();
 
-        CASINO_TABLE = registerBlock("casino_table", new CasinoTable(Block.Properties.of()));
-        CASINO_CHAIR = registerBlock("casino_chair", new CasinoChair(Block.Properties.of()));
-        CASINO_TABLE_ITEM = registerItem("casino_table", new BlockItem(CASINO_TABLE, new Item.Properties()));
-        CASINO_CHAIR_ITEM = registerItem("casino_chair", new BlockItem(CASINO_CHAIR, new Item.Properties()));
+        CASINO_TABLE = registerBlock("casino_table", CasinoTable::new, Block.Properties.ofFullCopy(Blocks.OAK_PLANKS));
+        CASINO_CHAIR = registerBlock("casino_chair", CasinoChair::new, Block.Properties.ofFullCopy(Blocks.OAK_PLANKS));
 
-        BLACK_CARD_DECK = registerItem("black_card_deck", new CardDeck(new Item.Properties()));
-        BLUE_CARD_DECK = registerItem("blue_card_deck", new CardDeck(new Item.Properties()));
-        PINK_CARD_DECK = registerItem("pink_card_deck", new CardDeck(new Item.Properties()));
-        RED_CARD_DECK = registerItem("red_card_deck", new CardDeck(new Item.Properties()));
-        CARD = registerItem("card", new Card(new Item.Properties()));
-        CARD_BACK = registerItem("card_back", new CardBack(new Item.Properties()));
-        BLACK_CASINO_CHIP = registerItem("black_casino_chip", new Chip(new Item.Properties()));
-        BLUE_CASINO_CHIP = registerItem("blue_casino_chip", new Chip(new Item.Properties()));
-        GREEN_CASINO_CHIP = registerItem("green_casino_chip", new Chip(new Item.Properties()));
-        RED_CASINO_CHIP = registerItem("red_casino_chip", new Chip(new Item.Properties()));
-        WHITE_CASINO_CHIP = registerItem("white_casino_chip", new Chip(new Item.Properties()));
+        BLACK_CARD_DECK = registerItem("black_card_deck", CardDeck::new, new Item.Properties());
+        BLUE_CARD_DECK = registerItem("blue_card_deck", CardDeck::new, new Item.Properties());
+        PINK_CARD_DECK = registerItem("pink_card_deck", CardDeck::new, new Item.Properties());
+        RED_CARD_DECK = registerItem("red_card_deck", CardDeck::new, new Item.Properties());
+        CARD = registerItem("card", Card::new, new Item.Properties());
+        CARD_BACK = registerItem("card_back", CardBack::new, new Item.Properties());
+        BLACK_CASINO_CHIP = registerItem("black_casino_chip", Chip::new, new Item.Properties());
+        BLUE_CASINO_CHIP = registerItem("blue_casino_chip", Chip::new, new Item.Properties());
+        GREEN_CASINO_CHIP = registerItem("green_casino_chip", Chip::new, new Item.Properties());
+        RED_CASINO_CHIP = registerItem("red_casino_chip", Chip::new, new Item.Properties());
+        WHITE_CASINO_CHIP = registerItem("white_casino_chip", Chip::new, new Item.Properties());
 
-        SEAT = registerEntity(
-                "seat",
-                EntityType.Builder.of(SeatEntity::new, MobCategory.MISC).sized(0, 0).build("seat")
-        );
+        SEAT = registerEntity("seat", EntityType.Builder.of(SeatEntity::new, MobCategory.MISC).sized(0, 0));
         CARD_DECK_TYPE = registerEntity(
                 "card_deck",
                 EntityType.Builder.<CardDeckEntity>of(CardDeckEntity::new, MobCategory.MISC)
                         .sized(0.5F, 0.1F)
-                        .build("card_deck")
         );
         CARD_TYPE = registerEntity(
                 "card",
                 EntityType.Builder.<CardEntity>of(CardEntity::new, MobCategory.MISC)
                         .sized(0.5F, 0.01F)
-                        .build("card")
         );
         CHIP_TYPE = registerEntity(
                 "chip",
                 EntityType.Builder.<ChipEntity>of(ChipEntity::new, MobCategory.MISC)
                         .sized(0.25F, 0.025F)
-                        .build("chip")
         );
 
         EntityDataSerializers.registerSerializer(CardDeckEntity.BYTE_ARRAY);
@@ -120,26 +115,46 @@ public class Poker implements ModInitializer {
                             output.accept(RED_CASINO_CHIP);
                             output.accept(WHITE_CASINO_CHIP);
 
-                            output.accept(CASINO_TABLE_ITEM);
-                            output.accept(CASINO_CHAIR_ITEM);
+                            output.accept(CASINO_TABLE);
+                            output.accept(CASINO_CHAIR);
                         })
                         .build()
         );
     }
 
-    private static Block registerBlock(String name, Block block) {
-        return Registry.register(BuiltInRegistries.BLOCK, id(name), block);
+    public static Item registerItem(
+            String name,
+            Function<Item.Properties, Item> itemFactory,
+            Item.Properties settings
+    ) {
+        ResourceKey<Item> itemKey = keyOfItem(name);
+        Item item = itemFactory.apply(settings.setId(itemKey));
+        Registry.register(BuiltInRegistries.ITEM, itemKey, item);
+
+        return item;
     }
 
-    private static Item registerItem(String name, Item item) {
-        return Registry.register(BuiltInRegistries.ITEM, id(name), item);
+    private static Block registerBlock(
+            String name,
+            Function<BlockBehaviour.Properties, Block> blockFactory,
+            BlockBehaviour.Properties settings
+    ) {
+        ResourceKey<Block> blockKey = keyOfBlock(name);
+        Block block = blockFactory.apply(settings.setId(blockKey));
+        // create associated item for the block
+        ResourceKey<Item> itemKey = keyOfItem(name);
+        BlockItem blockItem = new BlockItem(block, new Item.Properties().setId(itemKey));
+        Registry.register(BuiltInRegistries.ITEM, itemKey, blockItem);
+
+        return Registry.register(BuiltInRegistries.BLOCK, blockKey, block);
     }
 
     private static <T extends net.minecraft.world.entity.Entity> EntityType<T> registerEntity(
             String name,
-            EntityType<T> entityType
+            EntityType.Builder<T> entityBuilder
     ) {
-        return Registry.register(BuiltInRegistries.ENTITY_TYPE, id(name), entityType);
+        ResourceKey<EntityType<?>> entityKey = keyOfEntity(name);
+        EntityType<T> entityType = entityBuilder.build(entityKey);
+        return Registry.register(BuiltInRegistries.ENTITY_TYPE, entityKey, entityType);
     }
-
 }

@@ -8,6 +8,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
@@ -92,14 +93,14 @@ public class CardEntity extends EntityBase {
     }
 
     @Override
-    public boolean hurt(DamageSource source, float amount) {
+    public boolean hurtServer(ServerLevel level, DamageSource source, float amount) {
         if (source.getEntity() instanceof Player player) {
             if (!player.isCreative()) {
                 ItemStack stack = Card.newStack(getColor(), getCard());
-                ItemEntity entity = new ItemEntity(level(), getX(), getY(), getZ(), stack);
+                ItemEntity entity = new ItemEntity(level, getX(), getY(), getZ(), stack);
                 entity.setNoPickUpDelay();
                 entity.setDeltaMovement(0, 0, 0);
-                level().addFreshEntity(entity);
+                level.addFreshEntity(entity);
             }
 
             remove(RemovalReason.DISCARDED);

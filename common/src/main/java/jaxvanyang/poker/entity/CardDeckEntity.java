@@ -9,6 +9,7 @@ import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializer;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -130,11 +131,11 @@ public class CardDeckEntity extends EntityBase {
     }
 
     @Override
-    public boolean hurt(DamageSource source, float amount) {
+    public boolean hurtServer(ServerLevel level, DamageSource source, float amount) {
         if (source.getEntity() instanceof Player player) {
-            if (!player.isCreative() && !level().isClientSide()) {
+            if (!player.isCreative()) {
                 ItemStack stack = CardDeck.newStack(getColor(), getDeck());
-                spawnStackAtEntity(level(), stack, this);
+                spawnStackAtEntity(level, stack, this);
             }
 
             remove(RemovalReason.DISCARDED);

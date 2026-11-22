@@ -24,7 +24,7 @@ public class CasinoChair extends Block {
     private static final IntegerProperty FACING = IntegerProperty.create("facing", 0, 7);
 
     public CasinoChair(Properties properties) {
-        super(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS));
+        super(properties);
 
         registerDefaultState(getStateDefinition().any().setValue(FACING, 0));
     }

@@ -24,6 +24,7 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
@@ -33,6 +34,7 @@ import net.neoforged.neoforge.registries.*;
 
 import java.util.function.Supplier;
 
+import static jaxvanyang.poker.Common.keyOfEntity;
 import static jaxvanyang.poker.Constants.MOD_ID;
 
 @Mod(MOD_ID)
@@ -49,13 +51,21 @@ public class Poker {
     );
     public static final DeferredRegister<EntityType<?>> ENTITY_TYPES = DeferredRegister.create(
             BuiltInRegistries.ENTITY_TYPE,
-            Constants.MOD_ID
+            MOD_ID
     );
 
-    public static final DeferredBlock<Block> CASINO_TABLE = BLOCKS.registerBlock("casino_table", CasinoTable::new);
+    public static final DeferredBlock<Block> CASINO_TABLE = BLOCKS.registerBlock(
+            "casino_table",
+            CasinoTable::new,
+            Block.Properties.ofFullCopy(Blocks.OAK_PLANKS)
+    );
     public static final DeferredItem<BlockItem> CASINO_TABLE_ITEM = ITEMS.registerSimpleBlockItem(CASINO_TABLE);
 
-    public static final DeferredBlock<Block> CASINO_CHAIR = BLOCKS.registerBlock("casino_chair", CasinoChair::new);
+    public static final DeferredBlock<Block> CASINO_CHAIR = BLOCKS.registerBlock(
+            "casino_chair",
+            CasinoChair::new,
+            Block.Properties.ofFullCopy(Blocks.OAK_PLANKS)
+    );
     public static final DeferredItem<BlockItem> CASINO_CHAIR_ITEM = ITEMS.registerSimpleBlockItem(CASINO_CHAIR);
 
     public static final DeferredItem<Item> BLACK_CARD_DECK = ITEMS.registerItem("black_card_deck", CardDeck::new);
@@ -72,40 +82,25 @@ public class Poker {
 
     public static final Supplier<EntityType<SeatEntity>> SEAT = ENTITY_TYPES.register(
             "seat",
-            () -> EntityType.Builder.of(
-                    SeatEntity::new,
-                    MobCategory.MISC
-            ).sized(0, 0).build("seat")
+            () -> EntityType.Builder.of(SeatEntity::new, MobCategory.MISC).sized(0, 0).build(keyOfEntity("seat"))
     );
     public static final Supplier<EntityType<CardDeckEntity>> CARD_DECK_TYPE = ENTITY_TYPES.register(
             "card_deck",
-            () -> EntityType.Builder.<CardDeckEntity>of(
-                            CardDeckEntity::new,
-                            MobCategory.MISC
-                    )
-                    .sized(
-                            0.5F,
-                            0.1F
-                    )
-                    .build("card_deck")
+            () -> EntityType.Builder.<CardDeckEntity>of(CardDeckEntity::new, MobCategory.MISC)
+                    .sized(0.5F, 0.1F)
+                    .build(keyOfEntity("card_deck"))
     );
     public static final Supplier<EntityType<CardEntity>> CARD_TYPE = ENTITY_TYPES.register(
             "card",
-            () -> EntityType.Builder.<CardEntity>of(
-                            CardEntity::new,
-                            MobCategory.MISC
-                    )
+            () -> EntityType.Builder.<CardEntity>of(CardEntity::new, MobCategory.MISC)
                     .sized(0.5F, 0.01F)
-                    .build("card")
+                    .build(keyOfEntity("card"))
     );
     public static final Supplier<EntityType<ChipEntity>> CHIP_TYPE = ENTITY_TYPES.register(
             "chip",
-            () -> EntityType.Builder.<ChipEntity>of(
-                            ChipEntity::new,
-                            MobCategory.MISC
-                    )
+            () -> EntityType.Builder.<ChipEntity>of(ChipEntity::new, MobCategory.MISC)
                     .sized(0.25F, 0.025F)
-                    .build("chip")
+                    .build(keyOfEntity("chip"))
     );
 
 
@@ -133,7 +128,7 @@ public class Poker {
     );
 
     public Poker(IEventBus bus) {
-        CommonClass.init();
+        Common.init();
 
         BLOCKS.register(bus);
         ITEMS.register(bus);
