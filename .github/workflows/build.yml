@@ -52,3 +52,8 @@ jobs:
           files: '*-neoforge-*.jar'
           modrinth-id: LJxszJoe
           modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
+      - uses: Kira-NT/mc-publish@v3
+        with:
+          files: '*-forge-*.jar'
+          modrinth-id: LJxszJoe
+          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
