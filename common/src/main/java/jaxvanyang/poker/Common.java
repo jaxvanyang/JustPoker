@@ -14,6 +14,10 @@ public class Common {
     public static final String MOD_ID = "just_poker";
     public static final String MOD_NAME = "Just Poker";
     public static final Logger LOG = LoggerFactory.getLogger(MOD_NAME);
+
+    public static final String LORE_VERSION_KEY = "lore_version";
+    public static final String LORE_VERSION = "1";
+
     public static ResourceKey<Block> keyOfBlock(String name) {
         return ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(MOD_ID, name));
     }

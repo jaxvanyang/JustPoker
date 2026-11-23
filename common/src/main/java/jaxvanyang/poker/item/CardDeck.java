@@ -13,15 +13,38 @@ import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.item.component.ItemLore;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
 
 import java.util.Arrays;
 import java.util.List;
+
+import static jaxvanyang.poker.Common.*;
 
 public class CardDeck extends Item {
     public static final int DECK_SIZE = 52;
 
     public CardDeck(Properties properties) {
         super(properties.stacksTo(1));
+    }
+
+    @Override
+    public void inventoryTick(ItemStack stack, ServerLevel level, Entity entity, EquipmentSlot slot) {
+        CustomData data = stack.get(DataComponents.CUSTOM_DATA);
+        if (data == null) {
+            return;
+        }
+
+        CompoundTag tags = data.copyTag();
+        String loreVersion = tags.getString(LORE_VERSION_KEY).orElse("");
+        if (!LORE_VERSION.equals(loreVersion)) {
+            LOG.warn("Updating lore for card deck item from version {} to {}", loreVersion, LORE_VERSION);
+            stack.remove(DataComponents.LORE);
+            tags.putString(LORE_VERSION_KEY, LORE_VERSION);
+            stack.set(DataComponents.CUSTOM_DATA, CustomData.of(tags));
+            setLore(stack, getDeck(stack));
+        }
     }
 
     public static ItemStack newStack(byte color, byte[] deck) {
@@ -49,11 +72,16 @@ public class CardDeck extends Item {
     public static void setDeck(ItemStack stack, byte[] deck) {
         CompoundTag tags = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
         tags.putByteArray("deck", deck);
+        tags.putString(LORE_VERSION_KEY, LORE_VERSION);
         stack.set(DataComponents.CUSTOM_DATA, CustomData.of(tags));
         stack.setDamageValue(DECK_SIZE - deck.length);
 
+        setLore(stack, deck);
+    }
+
+    private static void setLore(ItemStack stack, byte[] deck) {
         if (deck.length == DECK_SIZE) {
-            stack.set(DataComponents.LORE, ItemLore.EMPTY);
+            stack.remove(DataComponents.LORE);
             return;
         }
 

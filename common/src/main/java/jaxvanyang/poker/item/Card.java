@@ -6,8 +6,10 @@ import jaxvanyang.poker.platform.Services;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.CustomData;
@@ -18,16 +20,35 @@ import net.minecraft.world.level.Level;
 
 import java.util.List;
 
+import static jaxvanyang.poker.Common.LORE_VERSION;
+import static jaxvanyang.poker.Common.LORE_VERSION_KEY;
 
 public class Card extends Item {
     public Card(Properties properties) {
         super(properties.stacksTo(1));
     }
 
+    @Override
+    public void inventoryTick(ItemStack stack, ServerLevel level, Entity entity, EquipmentSlot slot) {
+        CustomData data = stack.get(DataComponents.CUSTOM_DATA);
+        if (data == null) {
+            return;
+        }
+
+        CompoundTag tags = data.copyTag();
+        if (!LORE_VERSION.equals(tags.getString(LORE_VERSION_KEY).orElse(""))) {
+            stack.remove(DataComponents.LORE);
+            tags.putString(LORE_VERSION_KEY, LORE_VERSION);
+            stack.set(DataComponents.CUSTOM_DATA, CustomData.of(tags));
+            setLore(stack, getColor(stack));
+        }
+    }
+
     public static ItemStack newStack(byte color, byte cardId) {
         ItemStack stack = new ItemStack(Services.PLATFORM.getCardItem());
         CompoundTag tags = new CompoundTag();
         tags.putByte("color", color);
+        tags.putString(LORE_VERSION_KEY, LORE_VERSION);
         stack.set(DataComponents.CUSTOM_DATA, CustomData.of(tags));
         stack.set(
                 DataComponents.CUSTOM_MODEL_DATA,
@@ -36,13 +57,17 @@ public class Card extends Item {
         Component suit = Component.translatable("item.just_poker.suit." + get_suit(cardId));
         Component rank = Component.translatable("item.just_poker.rank." + get_rank(cardId));
         stack.set(DataComponents.ITEM_NAME, Component.translatable("item.just_poker.card_name", suit, rank));
+        setLore(stack, color);
+
+        return stack;
+    }
+
+    private static void setLore(ItemStack stack, byte color) {
         stack.set(
                 DataComponents.LORE,
                 new ItemLore(List.of(Component.translatable("item.just_poker.card_color." + color)
                                              .withColor(getColorCode(color))))
         );
-
-        return stack;
     }
 
     public static byte getColor(ItemStack stack) {
