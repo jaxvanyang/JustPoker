@@ -4,18 +4,19 @@
 * text eol=lf
 *.bat text eol=crlf
 *.cfg text eol=lf
+*.gradle text eol=crlf
+*.java text eol=lf
+*.patch text eol=lf
+src/generated/**/*.json text eol=lf
+src/generated/**/.cache/* text eol=lf
+
 *.dll binary
 *.exe binary
 *.gif binary
-*.gradle text eol=crlf
 *.jar binary
-*.java text eol=lf
 *.jks binary
 *.lzma binary
 *.ogg binary
-*.patch text eol=lf
 *.png binary
 *.pyd binary
 *.zip binary
-src/generated/**/*.json text eol=lf
-src/generated/**/.cache/* text eol=lf
