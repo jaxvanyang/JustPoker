@@ -29,7 +29,7 @@ public class SeatEntity extends Entity {
         if (!level.isClientSide()) {
             SeatEntity seat = new SeatEntity(level, pos, dy, direction);
             level.addFreshEntity(seat);
-            player.startRiding(seat, false);
+            player.startRiding(seat);
         }
 
         return InteractionResult.SUCCESS;

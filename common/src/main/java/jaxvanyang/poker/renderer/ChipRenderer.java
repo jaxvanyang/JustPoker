@@ -5,9 +5,11 @@ import com.mojang.math.Axis;
 import jaxvanyang.poker.entity.ChipEntity;
 import jaxvanyang.poker.item.Chip;
 import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.state.EntityRenderState;
+import net.minecraft.client.renderer.state.CameraRenderState;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.Random;
@@ -35,13 +37,13 @@ public class ChipRenderer extends EntityRenderer<ChipEntity, ChipRenderer.ChipRe
     }
 
     @Override
-    public void render(
+    public void submit(
             ChipRenderState state,
             PoseStack poseStack,
-            MultiBufferSource buffer,
-            int packedLight
+            SubmitNodeCollector nodeCollector,
+            CameraRenderState cameraRenderState
     ) {
-        super.render(state, poseStack, buffer, packedLight);
+        super.submit(state, poseStack, nodeCollector, cameraRenderState);
 
         ItemStack stack = Chip.newStack(state.color);
         poseStack.pushPose();
@@ -52,7 +54,7 @@ public class ChipRenderer extends EntityRenderer<ChipEntity, ChipRenderer.ChipRe
             Random r = new Random(i);
             poseStack.translate(r.nextDouble() * 0.05D - 0.025D, 0, r.nextDouble() * 0.05D - 0.025D);
             poseStack.mulPose(Axis.XN.rotationDegrees(90));
-            Helper.renderItem(stack, 0, 0, i * 0.032D, poseStack, buffer, packedLight);
+            Helper.renderItem(stack, 0, 0, i * 0.032D, poseStack, nodeCollector, state.lightCoords);
             poseStack.popPose();
         }
         poseStack.popPose();

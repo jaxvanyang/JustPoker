@@ -4,10 +4,11 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import jaxvanyang.poker.entity.CardDeckEntity;
 import jaxvanyang.poker.item.CardBack;
-import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.state.EntityRenderState;
+import net.minecraft.client.renderer.state.CameraRenderState;
 import net.minecraft.world.item.ItemStack;
 
 public class CardDeckRenderer extends EntityRenderer<CardDeckEntity, CardDeckRenderer.CardDeckRenderState> {
@@ -35,13 +36,13 @@ public class CardDeckRenderer extends EntityRenderer<CardDeckEntity, CardDeckRen
     }
 
     @Override
-    public void render(
+    public void submit(
             CardDeckRenderState state,
             PoseStack poseStack,
-            MultiBufferSource buffer,
-            int packedLight
+            SubmitNodeCollector nodeCollector,
+            CameraRenderState cameraRenderState
     ) {
-        super.render(state, poseStack, buffer, packedLight);
+        super.submit(state, poseStack, nodeCollector, cameraRenderState);
 
         ItemStack stack = CardBack.newStack(state.color);
         poseStack.pushPose();
@@ -50,7 +51,7 @@ public class CardDeckRenderer extends EntityRenderer<CardDeckEntity, CardDeckRen
         // TODO: just render a scaled card
         for (int i = 0; i < state.deck.length; ++i) {
             poseStack.pushPose();
-            Helper.renderItem(stack, 0, i * 0.001D, 0, poseStack, buffer, packedLight);
+            Helper.renderItem(stack, 0, i * 0.001D, 0, poseStack, nodeCollector, state.lightCoords);
             poseStack.popPose();
         }
         poseStack.popPose();

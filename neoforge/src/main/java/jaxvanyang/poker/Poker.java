@@ -138,7 +138,7 @@ public class Poker {
         ENTITY_DATA_SERIALIZERS.register("byte_array", () -> CardDeckEntity.BYTE_ARRAY);
         ENTITY_DATA_SERIALIZERS.register(bus);
 
-        if (FMLEnvironment.dist == Dist.CLIENT) {
+        if (FMLEnvironment.getDist() == Dist.CLIENT) {
             bus.addListener(Poker::registerEntityRenders);
         }
     }
