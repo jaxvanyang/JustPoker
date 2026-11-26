@@ -18,6 +18,8 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.phys.Vec3;
 
 import java.util.Arrays;
@@ -162,14 +164,25 @@ public class CardDeckEntity extends EntityBase {
     }
 
     @Override
-    protected void readAdditionalSaveData(CompoundTag compoundTag) {
-        super.readAdditionalSaveData(compoundTag);
-        setDeck(compoundTag.getByteArray("deck").get());
+    protected void readAdditionalSaveData(ValueInput valueInput) {
+        super.readAdditionalSaveData(valueInput);
+        setDeck(valueInput.getIntArray("deck").map(arr -> {
+            byte[] bytes = new byte[arr.length];
+            for (int i = 0; i < arr.length; i++) {
+                bytes[i] = (byte) arr[i];
+            }
+            return bytes;
+        }).orElse(new byte[0]));
     }
 
     @Override
-    protected void addAdditionalSaveData(CompoundTag compoundTag) {
-        super.addAdditionalSaveData(compoundTag);
-        compoundTag.putByteArray("deck", getDeck());
+    protected void addAdditionalSaveData(ValueOutput valueOutput) {
+        super.addAdditionalSaveData(valueOutput);
+        byte[] deck = getDeck();
+        int[] newDeck = new int[getDeck().length];
+        for (int i = 0; i < newDeck.length; ++i) {
+            newDeck[i] = deck[i];
+        }
+        valueOutput.putIntArray("deck", newDeck);
     }
 }

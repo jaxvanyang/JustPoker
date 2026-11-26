@@ -28,7 +28,6 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
-import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLEnvironment;
@@ -125,18 +124,18 @@ public class Poker {
     );
 
     public Poker(FMLJavaModLoadingContext context) {
-        IEventBus bus = context.getModEventBus();
+        var modBusGroup = context.getModBusGroup();
         Common.init();
 
-        BLOCKS.register(bus);
-        ITEMS.register(bus);
-        CREATIVE_MODE_TABS.register(bus);
-        ENTITY_TYPES.register(bus);
+        BLOCKS.register(modBusGroup);
+        ITEMS.register(modBusGroup);
+        CREATIVE_MODE_TABS.register(modBusGroup);
+        ENTITY_TYPES.register(modBusGroup);
         ENTITY_DATA_SERIALIZERS.register("byte_array", () -> CardDeckEntity.BYTE_ARRAY);
-        ENTITY_DATA_SERIALIZERS.register(bus);
+        ENTITY_DATA_SERIALIZERS.register(modBusGroup);
 
         if (FMLEnvironment.dist == Dist.CLIENT) {
-            bus.addListener(Poker::registerEntityRenders);
+            EntityRenderersEvent.RegisterRenderers.getBus(modBusGroup).addListener(Poker::registerEntityRenders);
         }
     }
 

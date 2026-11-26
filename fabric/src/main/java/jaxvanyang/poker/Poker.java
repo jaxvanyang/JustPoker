@@ -12,6 +12,7 @@ import jaxvanyang.poker.item.CardDeck;
 import jaxvanyang.poker.item.Chip;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricTrackedDataRegistry;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
@@ -77,6 +78,7 @@ public class Poker implements ModInitializer {
         RED_CASINO_CHIP = registerItem("red_casino_chip", Chip::new, new Item.Properties());
         WHITE_CASINO_CHIP = registerItem("white_casino_chip", Chip::new, new Item.Properties());
 
+        FabricTrackedDataRegistry.register(id("byte_array"), CardDeckEntity.BYTE_ARRAY);
         SEAT = registerEntity("seat", EntityType.Builder.of(SeatEntity::new, MobCategory.MISC).sized(0, 0));
         CARD_DECK_TYPE = registerEntity(
                 "card_deck",
@@ -93,8 +95,6 @@ public class Poker implements ModInitializer {
                 EntityType.Builder.<ChipEntity>of(ChipEntity::new, MobCategory.MISC)
                         .sized(0.25F, 0.025F)
         );
-
-        EntityDataSerializers.registerSerializer(CardDeckEntity.BYTE_ARRAY);
 
         POKER_TAB = Registry.register(
                 BuiltInRegistries.CREATIVE_MODE_TAB,

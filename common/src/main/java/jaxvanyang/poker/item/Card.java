@@ -18,6 +18,7 @@ import net.minecraft.world.level.Level;
 
 import java.util.List;
 
+import static jaxvanyang.poker.Common.LOG;
 
 public class Card extends Item {
     public Card(Properties properties) {
@@ -46,7 +47,17 @@ public class Card extends Item {
     }
 
     public static byte getColor(ItemStack stack) {
-        return stack.get(DataComponents.CUSTOM_DATA).copyTag().getByte("color").get();
+        var custom_data = stack.get(DataComponents.CUSTOM_DATA);
+        if (custom_data == null) {
+            LOG.warn("ItemStack {} does not have CustomData, returning default color", stack);
+            return 0;
+        }
+        var color = custom_data.copyTag().getByte("color");
+        if (color.isEmpty()) {
+            LOG.warn("ItemStack {} does not have color in CustomData, returning default color", stack);
+            return 0;
+        }
+        return color.get();
     }
 
     public static int getColorCode(byte color) {
@@ -60,8 +71,16 @@ public class Card extends Item {
     }
 
     public static byte getCardId(ItemStack stack) {
-        var data = stack.get(DataComponents.CUSTOM_MODEL_DATA).getString(0);
-        assert data != null;
+        var custom_model_data = stack.get(DataComponents.CUSTOM_MODEL_DATA);
+        if (custom_model_data == null) {
+            LOG.warn("ItemStack {} does not have CustomModelData, returning default card ID", stack);
+            return 1;
+        }
+        var data = custom_model_data.getString(0);
+        if (data == null) {
+            LOG.warn("ItemStack {} doesn't have card ID in CustomModelData, returning default card ID", stack);
+            return 1;
+        }
         return Byte.parseByte(data);
     }
 

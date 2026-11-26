@@ -12,6 +12,8 @@ import net.minecraft.world.entity.MoverType;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.phys.Vec3;
 
 public class EntityBase extends Entity {
@@ -77,20 +79,20 @@ public class EntityBase extends Entity {
     }
 
     @Override
+    protected void readAdditionalSaveData(ValueInput valueInput) {
+        setColor(valueInput.getByteOr("color", (byte) 0));
+        setRotation(valueInput.getFloatOr("rotation", 0.0F));
+    }
+
+    @Override
+    protected void addAdditionalSaveData(ValueOutput valueOutput) {
+        valueOutput.putByte("color", getColor());
+        valueOutput.putFloat("rotation", getRotation());
+    }
+
+    @Override
     protected void defineSynchedData(SynchedEntityData.Builder builder) {
         builder.define(COLOR, (byte) 0);
         builder.define(ROTATION, 0.0F);
-    }
-
-    @Override
-    protected void readAdditionalSaveData(CompoundTag compoundTag) {
-        setColor(compoundTag.getByte("color").get());
-        setRotation(compoundTag.getFloat("rotation").get());
-    }
-
-    @Override
-    protected void addAdditionalSaveData(CompoundTag compoundTag) {
-        compoundTag.putByte("color", getColor());
-        compoundTag.putFloat("rotation", getRotation());
     }
 }
