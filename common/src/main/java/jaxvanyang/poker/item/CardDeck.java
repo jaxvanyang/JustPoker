@@ -4,7 +4,6 @@ import jaxvanyang.poker.entity.CardDeckEntity;
 import jaxvanyang.poker.platform.Services;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.Item;
@@ -12,7 +11,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.item.component.ItemLore;
 import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.level.Level;
 
 import java.util.Arrays;
 import java.util.List;
@@ -26,7 +24,7 @@ public class CardDeck extends Item {
 
     public static ItemStack newStack(byte color, byte[] deck) {
         assert deck.length != 0;
-        ItemStack stack = new ItemStack(Services.PLATFORM.getCardDeckItem(color));
+        var stack = new ItemStack(Services.PLATFORM.getCardDeckItem(color));
         // use duability to indicate the number of cards left in the deck
         stack.set(DataComponents.MAX_DAMAGE, DECK_SIZE);
         setDeck(stack, deck);
@@ -35,19 +33,16 @@ public class CardDeck extends Item {
     }
 
     public static byte[] getDeck(ItemStack stack) {
-        CustomData data = stack.get(DataComponents.CUSTOM_DATA);
-        byte[] deck;
+        var data = stack.get(DataComponents.CUSTOM_DATA);
         if (data == null) {
-            deck = newSortedDeck();
-        } else {
-            deck = data.copyTag().getByteArray("deck").get();
+            return newSortedDeck();
         }
 
-        return deck;
+        return data.copyTag().getByteArray("deck").orElse(newSortedDeck());
     }
 
     public static void setDeck(ItemStack stack, byte[] deck) {
-        CompoundTag tags = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
+        var tags = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
         tags.putByteArray("deck", deck);
         stack.set(DataComponents.CUSTOM_DATA, CustomData.of(tags));
         stack.setDamageValue(DECK_SIZE - deck.length);
@@ -57,7 +52,7 @@ public class CardDeck extends Item {
             return;
         }
 
-        boolean[] missing = new boolean[DECK_SIZE + 1];
+        var missing = new boolean[DECK_SIZE + 1];
         Arrays.fill(missing, true);
         for (byte b : deck) {
             missing[b] = false;
@@ -84,11 +79,11 @@ public class CardDeck extends Item {
     }
 
     public static byte[] newRandomDeck() {
-        byte[] deck = newSortedDeck();
+        var deck = newSortedDeck();
         // shuffle the deck
         for (int i = 0; i < DECK_SIZE; i++) {
             int j = (int) (Math.random() * DECK_SIZE);
-            byte tmp = deck[i];
+            var tmp = deck[i];
             deck[i] = deck[j];
             deck[j] = tmp;
         }
@@ -96,7 +91,7 @@ public class CardDeck extends Item {
     }
 
     public static byte[] newSortedDeck() {
-        byte[] deck = new byte[DECK_SIZE];
+        var deck = new byte[DECK_SIZE];
         for (byte i = 0; i < DECK_SIZE; i++) {
             deck[i] = (byte) (i + 1);
         }
@@ -104,7 +99,7 @@ public class CardDeck extends Item {
     }
 
     public byte getColor() {
-        String id = BuiltInRegistries.ITEM.getKey(this).toString();
+        var id = BuiltInRegistries.ITEM.getKey(this).toString();
         byte color = -1;
         if (id.contains("black")) {
             color = 0;
@@ -122,18 +117,17 @@ public class CardDeck extends Item {
 
     @Override
     public InteractionResult useOn(UseOnContext context) {
-        Level level = context.getLevel();
+        var level = context.getLevel();
 
         // TODO: only place on the ground
         if (level.isClientSide()) {
             return InteractionResult.SUCCESS;
         }
 
-        ItemStack stack = context.getItemInHand();
-        byte color = getColor();
-        byte[] deck = getDeck(stack);
-
-        CardDeckEntity entity = new CardDeckEntity(
+        var stack = context.getItemInHand();
+        var color = getColor();
+        var deck = getDeck(stack);
+        var entity = new CardDeckEntity(
                 level,
                 context.getClickLocation(),
                 context.getRotation(),

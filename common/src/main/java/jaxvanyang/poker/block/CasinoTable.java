@@ -8,8 +8,6 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.ScheduledTickAccess;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
@@ -86,7 +84,7 @@ public class CasinoTable extends Block {
     }
 
     private boolean canConnectTo(LevelReader level, BlockPos pos, BooleanProperty dir) {
-        String dir_str = dir.toString();
+        var dir_str = dir.toString();
         if (dir_str.contains("north")) {
             pos = pos.north();
         } else if (dir_str.contains("south")) {
@@ -98,7 +96,7 @@ public class CasinoTable extends Block {
             pos = pos.west();
         }
 
-        Block block = level.getBlockState(pos).getBlock();
+        var block = level.getBlockState(pos).getBlock();
 
         return block instanceof CasinoTable;
     }

@@ -15,7 +15,7 @@ public class CardBack extends Item {
     }
 
     public static ItemStack newStack(byte color) {
-        ItemStack stack = new ItemStack(Services.PLATFORM.getCardBackItem());
+        var stack = new ItemStack(Services.PLATFORM.getCardBackItem());
         stack.set(
                 DataComponents.CUSTOM_MODEL_DATA,
                 new CustomModelData(List.of(), List.of(), List.of(String.valueOf(color)), List.of())

@@ -7,14 +7,12 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.item.component.CustomModelData;
 import net.minecraft.world.item.component.ItemLore;
 import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.level.Level;
 
 import java.util.List;
 
@@ -26,16 +24,16 @@ public class Card extends Item {
     }
 
     public static ItemStack newStack(byte color, byte cardId) {
-        ItemStack stack = new ItemStack(Services.PLATFORM.getCardItem());
-        CompoundTag tags = new CompoundTag();
+        var stack = new ItemStack(Services.PLATFORM.getCardItem());
+        var tags = new CompoundTag();
         tags.putByte("color", color);
         stack.set(DataComponents.CUSTOM_DATA, CustomData.of(tags));
         stack.set(
                 DataComponents.CUSTOM_MODEL_DATA,
                 new CustomModelData(List.of(), List.of(), List.of(String.valueOf(cardId)), List.of())
         );
-        Component suit = Component.translatable("item.just_poker.suit." + get_suit(cardId));
-        Component rank = Component.translatable("item.just_poker.rank." + get_rank(cardId));
+        var suit = Component.translatable("item.just_poker.suit." + get_suit(cardId));
+        var rank = Component.translatable("item.just_poker.rank." + get_rank(cardId));
         stack.set(DataComponents.ITEM_NAME, Component.translatable("item.just_poker.card_name", suit, rank));
         stack.set(
                 DataComponents.LORE,
@@ -127,14 +125,14 @@ public class Card extends Item {
 
     @Override
     public InteractionResult useOn(UseOnContext context) {
-        Level level = context.getLevel();
+        var level = context.getLevel();
 
         if (level.isClientSide()) {
             return InteractionResult.SUCCESS;
         }
 
-        ItemStack stack = context.getItemInHand();
-        Entity entity = context.getPlayer().isCrouching() ? new CardDeckEntity(
+        var stack = context.getItemInHand();
+        var entity = context.getPlayer().isCrouching() ? new CardDeckEntity(
                 level,
                 context.getClickLocation(),
                 context.getRotation(),
