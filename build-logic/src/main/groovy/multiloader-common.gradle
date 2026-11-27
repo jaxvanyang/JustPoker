@@ -11,6 +11,12 @@ java {
     toolchain.languageVersion = JavaLanguageVersion.of(java_version)
 }
 
+tasks.withType(Jar).configureEach {
+    from(rootProject.file('LICENSE')) {
+        rename { "${it}_${mod_name}" }
+    }
+}
+
 repositories {
     mavenCentral()
     // https://docs.gradle.org/current/userguide/declaring_repositories.html#declaring_content_exclusively_found_in_one_repository
@@ -30,10 +36,6 @@ repositories {
 }
 
 jar {
-    from(rootProject.file('LICENSE')) {
-        rename { "${it}_${mod_name}" }
-    }
-
     manifest {
         attributes([
                 'Specification-Title'   : mod_name,
@@ -67,7 +69,7 @@ processResources {
     ]
 
     var jsonExpandProps = expandProps.collectEntries {
-        key, value -> [(key): value instanceof String ? value.replace("\n", "\\\\n") : value]
+        key, value -> [(key): value instanceof String ? value.replace('\n', '\\\\n') : value]
     }
 
     filesMatching(['META-INF/mods.toml', 'META-INF/neoforge.mods.toml']) {
