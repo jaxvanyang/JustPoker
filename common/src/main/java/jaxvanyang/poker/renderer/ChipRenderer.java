@@ -52,7 +52,7 @@ public class ChipRenderer extends EntityRenderer<ChipEntity, ChipRenderer.ChipRe
             poseStack.pushPose();
             Random r = new Random(i);
             poseStack.translate(r.nextDouble() * 0.05D - 0.025D, 0, r.nextDouble() * 0.05D - 0.025D);
-            poseStack.mulPose(Axis.XN.rotationDegrees(90));
+            poseStack.rotate(Axis.XN.rotationDegrees(90));
             Helper.renderItem(stack, 0, 0, i * 0.032D, poseStack, nodeCollector, state.lightCoords);
             poseStack.popPose();
         }

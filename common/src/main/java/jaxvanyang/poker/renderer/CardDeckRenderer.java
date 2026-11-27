@@ -46,7 +46,7 @@ public class CardDeckRenderer extends EntityRenderer<CardDeckEntity, CardDeckRen
 
         ItemStack stack = CardBack.newStack(state.color);
         poseStack.pushPose();
-        poseStack.mulPose(Axis.YP.rotationDegrees(-state.rotation + 180.0F));
+        poseStack.rotate(Axis.YP.rotationDegrees(-state.rotation + 180.0F));
         poseStack.scale(2.0F, 1.5F, 2.0F);
         // TODO: just render a scaled card
         for (int i = 0; i < state.deck.length; ++i) {
