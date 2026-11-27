@@ -59,7 +59,7 @@ public class EntityBase extends Entity {
         super.tick();
 
         // Apply gravity
-        if (isNoGravity()) {
+        if (isNoGravity() || level().isClientSide()) {
             return;
         }
         Vec3 v = getDeltaMovement();
