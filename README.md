@@ -18,5 +18,6 @@ Also thanks to:
 
 - [jaredlll08/MultiLoader-Template: A template for a NeoForge + Fabric project setup using a Common source set.](https://github.com/jaredlll08/MultiLoader-Template)
 - [Playing Cards by Calemi - CurseForge][playingcards]
+- [Primers | NeoForged docs](https://docs.neoforged.net/primer/docs)
 
 [playingcards]: https://www.curseforge.com/minecraft/mc-mods/playing-cards
