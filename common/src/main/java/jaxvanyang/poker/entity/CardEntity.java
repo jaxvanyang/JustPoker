@@ -3,7 +3,6 @@ package jaxvanyang.poker.entity;
 import jaxvanyang.poker.item.Card;
 import jaxvanyang.poker.item.CardDeck;
 import jaxvanyang.poker.platform.Services;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -15,7 +14,6 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
@@ -48,14 +46,14 @@ public class CardEntity extends EntityBase {
     }
 
     public void pick(Player player, InteractionHand hand) {
-        ItemStack stack = Card.newStack(getColor(), getCard());
+        var stack = Card.newStack(getColor(), getCard());
         player.setItemInHand(hand, stack);
         remove(RemovalReason.DISCARDED);
     }
 
     @Override
     public InteractionResult interact(Player player, InteractionHand hand) {
-        ItemStack heldStack = player.getItemInHand(hand);
+        var heldStack = player.getItemInHand(hand);
 
         if (hand == InteractionHand.MAIN_HAND && heldStack.isEmpty()) {
             if (!level().isClientSide()) {
@@ -67,21 +65,21 @@ public class CardEntity extends EntityBase {
 
         // pick the card and place it onto the deck
         if (heldStack.getItem() instanceof CardDeck cardDeck) {
-            byte deckColor = cardDeck.getColor();
+            var deckColor = cardDeck.getColor();
             if (deckColor != getColor()) {
                 player.displayClientMessage(Component.translatable("message.just_poker.not_same_color"), true);
                 return InteractionResult.PASS;
             }
 
-            byte[] deck = CardDeck.getDeck(heldStack);
-            byte card = getCard();
+            var deck = CardDeck.getDeck(heldStack);
+            var card = getCard();
             if (CardDeckEntity.is_card_in_deck(card, deck)) {
                 player.displayClientMessage(Component.translatable("message.just_poker.already_in_deck"), true);
                 return InteractionResult.PASS;
             }
 
             if (!level().isClientSide()) {
-                byte[] newDeck = new byte[deck.length + 1];
+                var newDeck = new byte[deck.length + 1];
                 newDeck[0] = card;
                 System.arraycopy(deck, 0, newDeck, 1, deck.length);
                 CardDeck.setDeck(heldStack, newDeck);
@@ -98,8 +96,8 @@ public class CardEntity extends EntityBase {
     public boolean hurtServer(ServerLevel level, DamageSource source, float amount) {
         if (source.getEntity() instanceof Player player) {
             if (!player.isCreative()) {
-                ItemStack stack = Card.newStack(getColor(), getCard());
-                ItemEntity entity = new ItemEntity(level, getX(), getY(), getZ(), stack);
+                var stack = Card.newStack(getColor(), getCard());
+                var entity = new ItemEntity(level, getX(), getY(), getZ(), stack);
                 entity.setNoPickUpDelay();
                 entity.setDeltaMovement(0, 0, 0);
                 level.addFreshEntity(entity);
