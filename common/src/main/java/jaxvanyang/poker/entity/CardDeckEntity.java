@@ -76,7 +76,7 @@ public class CardDeckEntity extends EntityBase {
     }
 
     @Override
-    public InteractionResult interact(Player player, InteractionHand hand) {
+    public InteractionResult interact(Player player, InteractionHand hand, Vec3 location) {
         ItemStack heldStack = player.getItemInHand(hand);
 
         // shuffle the deck only when it's full
@@ -87,12 +87,12 @@ public class CardDeckEntity extends EntityBase {
                 } else {
                     // TODO: use a custom shuffle sound
                     player.playSound(SoundEvents.BOOK_PAGE_TURN);
-                    player.displayClientMessage(Component.translatable("message.just_poker.deck_shulled"), true);
+                    player.sendOverlayMessage(Component.translatable("message.just_poker.deck_shulled"));
                 }
 
                 return InteractionResult.SUCCESS;
             } else if (level().isClientSide()) {
-                player.displayClientMessage(Component.translatable("message.just_poker.deck_not_full"), true);
+                player.sendOverlayMessage(Component.translatable("message.just_poker.deck_not_full"));
             }
 
             return InteractionResult.PASS;
@@ -103,13 +103,13 @@ public class CardDeckEntity extends EntityBase {
             byte cardColor = Card.getColor(heldStack);
             assert 0 <= cardColor && cardColor < 4;
             if (cardColor != getColor()) {
-                player.displayClientMessage(Component.translatable("message.just_poker.not_same_color"), true);
+                player.sendOverlayMessage(Component.translatable("message.just_poker.not_same_color"));
                 return InteractionResult.PASS;
             }
             byte cardId = Card.getCardId(heldStack);
             assert 1 <= cardId && cardId <= CardDeck.DECK_SIZE;
             if (is_card_in_deck(cardId, getDeck())) {
-                player.displayClientMessage(Component.translatable("message.just_poker.already_in_deck"), true);
+                player.sendOverlayMessage(Component.translatable("message.just_poker.already_in_deck"));
                 return InteractionResult.PASS;
             }
 
@@ -129,7 +129,7 @@ public class CardDeckEntity extends EntityBase {
             return InteractionResult.SUCCESS;
         }
 
-        return super.interact(player, hand);
+        return super.interact(player, hand, location);
     }
 
     @Override

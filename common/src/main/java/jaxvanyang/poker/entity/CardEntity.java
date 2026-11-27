@@ -54,7 +54,7 @@ public class CardEntity extends EntityBase {
     }
 
     @Override
-    public InteractionResult interact(Player player, InteractionHand hand) {
+    public InteractionResult interact(Player player, InteractionHand hand, Vec3 location) {
         ItemStack heldStack = player.getItemInHand(hand);
 
         if (hand == InteractionHand.MAIN_HAND && heldStack.isEmpty()) {
@@ -69,14 +69,14 @@ public class CardEntity extends EntityBase {
         if (heldStack.getItem() instanceof CardDeck cardDeck) {
             byte deckColor = cardDeck.getColor();
             if (deckColor != getColor()) {
-                player.displayClientMessage(Component.translatable("message.just_poker.not_same_color"), true);
+                player.sendOverlayMessage(Component.translatable("message.just_poker.not_same_color"));
                 return InteractionResult.PASS;
             }
 
             byte[] deck = CardDeck.getDeck(heldStack);
             byte card = getCard();
             if (CardDeckEntity.is_card_in_deck(card, deck)) {
-                player.displayClientMessage(Component.translatable("message.just_poker.already_in_deck"), true);
+                player.sendOverlayMessage(Component.translatable("message.just_poker.already_in_deck"));
                 return InteractionResult.PASS;
             }
 
@@ -91,7 +91,7 @@ public class CardEntity extends EntityBase {
             return InteractionResult.SUCCESS;
         }
 
-        return super.interact(player, hand);
+        return super.interact(player, hand, location);
     }
 
     @Override

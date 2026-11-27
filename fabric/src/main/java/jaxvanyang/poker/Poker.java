@@ -11,14 +11,13 @@ import jaxvanyang.poker.item.CardBack;
 import jaxvanyang.poker.item.CardDeck;
 import jaxvanyang.poker.item.Chip;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
-import net.fabricmc.fabric.api.object.builder.v1.entity.FabricTrackedDataRegistry;
+import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTab;
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityDataRegistry;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.item.BlockItem;
@@ -78,7 +77,7 @@ public class Poker implements ModInitializer {
         RED_CASINO_CHIP = registerItem("red_casino_chip", Chip::new, new Item.Properties());
         WHITE_CASINO_CHIP = registerItem("white_casino_chip", Chip::new, new Item.Properties());
 
-        FabricTrackedDataRegistry.register(id("byte_array"), CardDeckEntity.BYTE_ARRAY);
+        FabricEntityDataRegistry.register(id("byte_array"), CardDeckEntity.BYTE_ARRAY);
         SEAT = registerEntity("seat", EntityType.Builder.of(SeatEntity::new, MobCategory.MISC).sized(0, 0));
         CARD_DECK_TYPE = registerEntity(
                 "card_deck",
@@ -99,7 +98,7 @@ public class Poker implements ModInitializer {
         POKER_TAB = Registry.register(
                 BuiltInRegistries.CREATIVE_MODE_TAB,
                 id("poker_tab"),
-                FabricItemGroup.builder()
+                FabricCreativeModeTab.builder()
                         .title(Component.translatable("itemGroup.%s".formatted(MOD_ID)))
                         .icon(() -> CARD.getDefaultInstance())
                         .displayItems((parameters, output) -> {

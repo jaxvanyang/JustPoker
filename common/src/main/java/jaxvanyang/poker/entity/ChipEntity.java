@@ -2,7 +2,6 @@ package jaxvanyang.poker.entity;
 
 import jaxvanyang.poker.item.Chip;
 import jaxvanyang.poker.platform.Services;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -19,7 +18,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 
 import java.util.List;
@@ -65,14 +63,14 @@ public class ChipEntity extends EntityBase {
     }
 
     @Override
-    public InteractionResult interact(Player player, InteractionHand hand) {
+    public InteractionResult interact(Player player, InteractionHand hand, Vec3 location) {
         ItemStack heldStack = player.getItemInHand(hand);
 
         // place chip
         if (heldStack.getItem() instanceof Chip chip && chip.getColor() == getColor()) {
             if (getSize() >= MAX_SIZE) {
                 if (level().isClientSide()) {
-                    player.displayClientMessage(Component.translatable("message.just_poker.chip_stack_is_full"), true);
+                    player.sendOverlayMessage(Component.translatable("message.just_poker.chip_stack_is_full"));
                 }
 
                 return InteractionResult.CONSUME;
