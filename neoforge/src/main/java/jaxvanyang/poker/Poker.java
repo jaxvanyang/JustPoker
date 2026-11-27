@@ -57,14 +57,14 @@ public class Poker {
     public static final DeferredBlock<Block> CASINO_TABLE = BLOCKS.registerBlock(
             "casino_table",
             CasinoTable::new,
-            Block.Properties.ofFullCopy(Blocks.OAK_PLANKS)
+            () -> Block.Properties.ofFullCopy(Blocks.OAK_PLANKS)
     );
     public static final DeferredItem<BlockItem> CASINO_TABLE_ITEM = ITEMS.registerSimpleBlockItem(CASINO_TABLE);
 
     public static final DeferredBlock<Block> CASINO_CHAIR = BLOCKS.registerBlock(
             "casino_chair",
             CasinoChair::new,
-            Block.Properties.ofFullCopy(Blocks.OAK_PLANKS)
+            () -> Block.Properties.ofFullCopy(Blocks.OAK_PLANKS)
     );
     public static final DeferredItem<BlockItem> CASINO_CHAIR_ITEM = ITEMS.registerSimpleBlockItem(CASINO_CHAIR);
 
