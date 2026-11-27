@@ -9,7 +9,8 @@ version = "${version}"
 displayName = "${mod_name}"
 updateJSONURL="https://api.modrinth.com/updates/just-poker/forge_updates.json?neoforge=only"
 displayURL="https://modrinth.com/mod/just-poker"
-logoFile="${mod_id}.png"
+#bannerFile="${mod_id}_banner.png" #optional
+iconFile="${mod_id}.png"
 credits="${credits}"
 authors = "${mod_author}"
 description = '''${description}'''
