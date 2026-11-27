@@ -4,13 +4,11 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import jaxvanyang.poker.entity.CardEntity;
 import jaxvanyang.poker.item.Card;
-import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.state.EntityRenderState;
 import net.minecraft.client.renderer.state.CameraRenderState;
-import net.minecraft.world.item.ItemStack;
 
 public class CardRenderer extends EntityRenderer<CardEntity, CardRenderer.CardRenderState> {
     public static class CardRenderState extends EntityRenderState {
@@ -45,10 +43,10 @@ public class CardRenderer extends EntityRenderer<CardEntity, CardRenderer.CardRe
     ) {
         super.submit(state, poseStack, nodeCollector, cameraRenderState);
 
-        ItemStack stack = Card.newStack(state.color, state.card);
+        var stack = Card.newStack(state.color, state.card);
         poseStack.pushPose();
         // fix z-fighting
-        double dy = 0.001D + 0.00001D * state.card;
+        var dy = 0.001D + 0.00001D * state.card;
         poseStack.mulPose(Axis.YP.rotationDegrees(-state.rotation + 180.0F));
         poseStack.scale(2.0F, 1.5F, 2.0F);
         Helper.renderItem(stack, 0, dy, 0, poseStack, nodeCollector, state.lightCoords);
