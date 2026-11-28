@@ -16,8 +16,14 @@ modification, while the code is written from scratch.
 
 Also thanks to:
 
-- [jaredlll08/MultiLoader-Template: A template for a NeoForge + Fabric project setup using a Common source set.](https://github.com/jaredlll08/MultiLoader-Template)
+- [MultiLoader-Template](https://github.com/jaredlll08/MultiLoader-Template)
 - [Playing Cards by Calemi - CurseForge][playingcards]
 - [Primers | NeoForged docs](https://docs.neoforged.net/primer/docs)
+- [mc-publish](https://github.com/Kira-NT/mc-publish)
+
+## Reminders
+
+- [GitHub Actions runner fails to trigger workflows on multiple tags push](https://github.com/actions/runner/issues/3644)
+- [mc-publish#49: Modrinth throws Authentication error](https://github.com/Kira-NT/mc-publish/issues/49#issuecomment-1924027601)
 
 [playingcards]: https://www.curseforge.com/minecraft/mc-mods/playing-cards
