@@ -8,8 +8,6 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
@@ -31,13 +29,13 @@ public class CasinoChair extends Block {
 
     @Override
     public @Nullable BlockState getStateForPlacement(BlockPlaceContext context) {
-        Player player = context.getPlayer();
+        var player = context.getPlayer();
         if (player == null) {
             return super.getStateForPlacement(context);
         }
 
-        float angle = player.getYRot();
-        int facing = ((int) Math.floor((angle + 22.5) / 45)) & 7;
+        var angle = player.getYRot();
+        var facing = ((int) Math.floor((angle + 22.5) / 45)) & 7;
 
         return defaultBlockState().setValue(FACING, facing);
     }

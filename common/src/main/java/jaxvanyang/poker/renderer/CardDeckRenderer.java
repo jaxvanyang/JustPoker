@@ -8,7 +8,6 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.state.EntityRenderState;
-import net.minecraft.world.item.ItemStack;
 
 public class CardDeckRenderer extends EntityRenderer<CardDeckEntity, CardDeckRenderer.CardDeckRenderState> {
     public static class CardDeckRenderState extends EntityRenderState {
@@ -43,7 +42,7 @@ public class CardDeckRenderer extends EntityRenderer<CardDeckEntity, CardDeckRen
     ) {
         super.render(state, poseStack, buffer, packedLight);
 
-        ItemStack stack = CardBack.newStack(state.color);
+        var stack = CardBack.newStack(state.color);
         poseStack.pushPose();
         poseStack.mulPose(Axis.YP.rotationDegrees(-state.rotation + 180.0F));
         poseStack.scale(2.0F, 1.5F, 2.0F);

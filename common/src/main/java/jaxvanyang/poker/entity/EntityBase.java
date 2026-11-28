@@ -12,7 +12,6 @@ import net.minecraft.world.entity.MoverType;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.Vec3;
 
 public class EntityBase extends Entity {
     public static final EntityDataAccessor<Byte> COLOR = SynchedEntityData.defineId(
@@ -60,7 +59,7 @@ public class EntityBase extends Entity {
         if (isNoGravity()) {
             return;
         }
-        Vec3 v = getDeltaMovement();
+        var v = getDeltaMovement();
         v = v.add(0.0, -0.06, 0.0);
         move(MoverType.SELF, v);
     }
