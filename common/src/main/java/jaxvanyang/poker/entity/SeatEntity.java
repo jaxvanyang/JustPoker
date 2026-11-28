@@ -26,7 +26,7 @@ public class SeatEntity extends Entity {
 
     public static InteractionResult create(Level level, BlockPos pos, double dy, Player player, Direction direction) {
         if (!level.isClientSide()) {
-            SeatEntity seat = new SeatEntity(level, pos, dy, direction);
+            var seat = new SeatEntity(level, pos, dy, direction);
             level.addFreshEntity(seat);
             player.startRiding(seat, false);
         }
@@ -50,7 +50,7 @@ public class SeatEntity extends Entity {
     public void tick() {
         super.tick();
 
-        Level level = level();
+        var level = level();
         if (level.isClientSide()) {
             return;
         }

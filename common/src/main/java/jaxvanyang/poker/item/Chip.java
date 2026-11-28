@@ -19,7 +19,7 @@ public class Chip extends Item {
     }
 
     public byte getColor() {
-        String id = BuiltInRegistries.ITEM.getKey(this).toString();
+        var id = BuiltInRegistries.ITEM.getKey(this).toString();
         byte color = -1;
         if (id.contains("black")) {
             color = 0;
@@ -46,15 +46,8 @@ public class Chip extends Item {
             return InteractionResult.SUCCESS;
         }
 
-        ItemStack stack = context.getItemInHand();
-        byte color = getColor();
-
-        ChipEntity entity = new ChipEntity(
-                level,
-                context.getClickLocation(),
-                context.getRotation(),
-                color
-        );
+        var color = getColor();
+        var entity = new ChipEntity(level, context.getClickLocation(), context.getRotation(), color);
         level.addFreshEntity(entity);
         context.getItemInHand().shrink(1);
 
