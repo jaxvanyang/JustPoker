@@ -82,7 +82,7 @@ public class CasinoTable extends Block {
     }
 
     private boolean canConnectTo(LevelAccessor level, BlockPos pos, BooleanProperty dir) {
-        String dir_str = dir.toString();
+        var dir_str = dir.toString();
         if (dir_str.contains("north")) {
             pos = pos.north();
         } else if (dir_str.contains("south")) {
@@ -94,7 +94,7 @@ public class CasinoTable extends Block {
             pos = pos.west();
         }
 
-        Block block = level.getBlockState(pos).getBlock();
+        var block = level.getBlockState(pos).getBlock();
 
         return block instanceof CasinoTable;
     }

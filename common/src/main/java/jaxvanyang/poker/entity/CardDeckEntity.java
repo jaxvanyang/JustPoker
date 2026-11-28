@@ -55,17 +55,17 @@ public class CardDeckEntity extends EntityBase {
     }
 
     public void deal(Player player, InteractionHand hand) {
-        byte color = getColor();
-        byte[] deck = getDeck();
-        ItemStack card = Card.newStack(color, deck[0]);
+        var color = getColor();
+        var deck = getDeck();
+        var card = Card.newStack(color, deck[0]);
         player.setItemInHand(hand, card);
-        byte[] newDeck = Arrays.copyOfRange(deck, 1, deck.length);
+        var newDeck = Arrays.copyOfRange(deck, 1, deck.length);
         setDeck(newDeck);
     }
 
     public void placeBack(Player player, InteractionHand hand, byte cardId) {
-        byte[] deck = getDeck();
-        byte[] newDeck = new byte[deck.length + 1];
+        var deck = getDeck();
+        var newDeck = new byte[deck.length + 1];
         newDeck[0] = cardId;
         System.arraycopy(deck, 0, newDeck, 1, deck.length);
         setDeck(newDeck);
@@ -74,7 +74,7 @@ public class CardDeckEntity extends EntityBase {
 
     @Override
     public InteractionResult interact(Player player, InteractionHand hand) {
-        ItemStack heldStack = player.getItemInHand(hand);
+        var heldStack = player.getItemInHand(hand);
 
         // shuffle the deck only when it's full
         if (player.isCrouching()) {
@@ -97,13 +97,13 @@ public class CardDeckEntity extends EntityBase {
 
         // place card back to deck
         if (heldStack.getItem() instanceof Card card) {
-            byte cardColor = Card.getColor(heldStack);
+            var cardColor = Card.getColor(heldStack);
             assert 0 <= cardColor && cardColor < 4;
             if (cardColor != getColor()) {
                 player.displayClientMessage(Component.translatable("message.just_poker.not_same_color"), true);
                 return InteractionResult.PASS;
             }
-            byte cardId = Card.getCardId(heldStack);
+            var cardId = Card.getCardId(heldStack);
             assert 1 <= cardId && cardId <= CardDeck.DECK_SIZE;
             if (is_card_in_deck(cardId, getDeck())) {
                 player.displayClientMessage(Component.translatable("message.just_poker.already_in_deck"), true);
@@ -133,7 +133,7 @@ public class CardDeckEntity extends EntityBase {
     public boolean hurt(DamageSource source, float amount) {
         if (source.getEntity() instanceof Player player) {
             if (!player.isCreative() && !level().isClientSide()) {
-                ItemStack stack = CardDeck.newStack(getColor(), getDeck());
+                var stack = CardDeck.newStack(getColor(), getDeck());
                 spawnStackAtEntity(level(), stack, this);
             }
 

@@ -8,7 +8,6 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.ItemStack;
 
 public class CardDeckRenderer extends EntityRenderer<CardDeckEntity> {
     public CardDeckRenderer(EntityRendererProvider.Context context) {
@@ -26,11 +25,9 @@ public class CardDeckRenderer extends EntityRenderer<CardDeckEntity> {
     ) {
         super.render(entity, entityYaw, partialTick, poseStack, buffer, packedLight);
 
-        byte color = entity.getEntityData().get(CardDeckEntity.COLOR);
-        ItemStack stack = CardBack.newStack(color);
-
+        var color = entity.getEntityData().get(CardDeckEntity.COLOR);
+        var stack = CardBack.newStack(color);
         poseStack.pushPose();
-
         poseStack.mulPose(Axis.YP.rotationDegrees(-entity.getRotation() + 180.0F));
         poseStack.scale(2.0F, 1.5F, 2.0F);
         // TODO: just render a scaled card
@@ -39,7 +36,6 @@ public class CardDeckRenderer extends EntityRenderer<CardDeckEntity> {
             Helper.renderItem(stack, 0, i * 0.001D, 0, poseStack, buffer, packedLight);
             poseStack.popPose();
         }
-
         poseStack.popPose();
     }
 

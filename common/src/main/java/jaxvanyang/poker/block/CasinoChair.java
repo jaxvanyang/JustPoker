@@ -31,13 +31,13 @@ public class CasinoChair extends Block {
 
     @Override
     public @Nullable BlockState getStateForPlacement(BlockPlaceContext context) {
-        Player player = context.getPlayer();
+        var player = context.getPlayer();
         if (player == null) {
             return super.getStateForPlacement(context);
         }
 
-        float angle = player.getYRot();
-        int facing = ((int) Math.floor((angle + 22.5) / 45)) & 7;
+        var angle = player.getYRot();
+        var facing = ((int) Math.floor((angle + 22.5) / 45)) & 7;
 
         return defaultBlockState().setValue(FACING, facing);
     }
