@@ -47,9 +47,14 @@ public class Chip extends Item {
         }
 
         var color = getColor();
-        var entity = new ChipEntity(level, context.getClickLocation(), context.getRotation(), color);
+        var player = context.getPlayer();
+        var size = 1;
+        if (player != null && player.isCrouching()) {
+            size = context.getItemInHand().getCount();
+        }
+        var entity = new ChipEntity(level, context.getClickLocation(), context.getRotation(), color, (byte) size);
         level.addFreshEntity(entity);
-        context.getItemInHand().shrink(1);
+        context.getItemInHand().shrink(size);
 
         return InteractionResult.SUCCESS;
     }
