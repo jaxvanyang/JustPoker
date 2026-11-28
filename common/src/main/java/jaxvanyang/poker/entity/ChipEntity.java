@@ -34,12 +34,12 @@ public class ChipEntity extends EntityBase {
         super(entityType, level);
     }
 
-    public ChipEntity(Level level, Vec3 pos, float rotation, byte color) {
+    public ChipEntity(Level level, Vec3 pos, float rotation, byte color, byte size) {
         super(Services.PLATFORM.getChipEntityType(), level);
         setPos(pos);
         setRotation(rotation);
         setColor(color);
-        setSize((byte) 1);
+        setSize(size);
     }
 
     public byte getSize() {
@@ -47,7 +47,11 @@ public class ChipEntity extends EntityBase {
     }
 
     public void setSize(byte size) {
-        assert 0 <= size && size <= MAX_SIZE;
+        if (size < 0) {
+            size = 0;
+        } else if (size > MAX_SIZE) {
+            size = MAX_SIZE;
+        }
         if (size == 0) {
             remove(RemovalReason.DISCARDED);
             return;
@@ -68,17 +72,25 @@ public class ChipEntity extends EntityBase {
 
         // place chip
         if (heldStack.getItem() instanceof Chip chip && chip.getColor() == getColor()) {
-            if (getSize() >= MAX_SIZE) {
+            var chipCount = getSize();
+            if (chipCount >= MAX_SIZE) {
                 if (level().isClientSide()) {
                     player.displayClientMessage(Component.translatable("message.just_poker.chip_stack_is_full"), true);
                 }
-
                 return InteractionResult.CONSUME;
             }
 
+            var placeCount = 1;
+            if (player.isCrouching()) {
+                placeCount = heldStack.getCount();
+                if (placeCount + chipCount > MAX_SIZE) {
+                    placeCount = MAX_SIZE - chipCount;
+                }
+            }
+
             if (!level().isClientSide()) {
-                setSize((byte) (getSize() + 1));
-                heldStack.shrink(1);
+                setSize((byte) (placeCount + chipCount));
+                heldStack.shrink(placeCount);
             }
 
             return InteractionResult.SUCCESS;

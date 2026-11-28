@@ -108,7 +108,8 @@ public class Card extends Item {
         }
 
         var stack = context.getItemInHand();
-        var entity = context.getPlayer().isCrouching() ? new CardDeckEntity(
+        var player = context.getPlayer();
+        var entity = player != null && player.isCrouching() ? new CardDeckEntity(
                 level,
                 context.getClickLocation(),
                 context.getRotation(),
