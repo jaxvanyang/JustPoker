@@ -16,7 +16,6 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
@@ -126,8 +125,8 @@ public class Poker implements ModInitializer {
             Function<Item.Properties, Item> itemFactory,
             Item.Properties settings
     ) {
-        ResourceKey<Item> itemKey = keyOfItem(name);
-        Item item = itemFactory.apply(settings.setId(itemKey));
+        var itemKey = keyOfItem(name);
+        var item = itemFactory.apply(settings.setId(itemKey));
         Registry.register(BuiltInRegistries.ITEM, itemKey, item);
 
         return item;
@@ -138,11 +137,11 @@ public class Poker implements ModInitializer {
             Function<BlockBehaviour.Properties, Block> blockFactory,
             BlockBehaviour.Properties settings
     ) {
-        ResourceKey<Block> blockKey = keyOfBlock(name);
-        Block block = blockFactory.apply(settings.setId(blockKey));
+        var blockKey = keyOfBlock(name);
+        var block = blockFactory.apply(settings.setId(blockKey));
         // create associated item for the block
-        ResourceKey<Item> itemKey = keyOfItem(name);
-        BlockItem blockItem = new BlockItem(block, new Item.Properties().setId(itemKey));
+        var itemKey = keyOfItem(name);
+        var blockItem = new BlockItem(block, new Item.Properties().setId(itemKey));
         Registry.register(BuiltInRegistries.ITEM, itemKey, blockItem);
 
         return Registry.register(BuiltInRegistries.BLOCK, blockKey, block);
@@ -152,8 +151,8 @@ public class Poker implements ModInitializer {
             String name,
             EntityType.Builder<T> entityBuilder
     ) {
-        ResourceKey<EntityType<?>> entityKey = keyOfEntity(name);
-        EntityType<T> entityType = entityBuilder.build(entityKey);
+        var entityKey = keyOfEntity(name);
+        var entityType = entityBuilder.build(entityKey);
         return Registry.register(BuiltInRegistries.ENTITY_TYPE, entityKey, entityType);
     }
 }

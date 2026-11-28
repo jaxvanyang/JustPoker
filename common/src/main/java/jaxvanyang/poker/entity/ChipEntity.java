@@ -64,7 +64,7 @@ public class ChipEntity extends EntityBase {
 
     @Override
     public InteractionResult interact(Player player, InteractionHand hand) {
-        ItemStack heldStack = player.getItemInHand(hand);
+        var heldStack = player.getItemInHand(hand);
 
         // place chip
         if (heldStack.getItem() instanceof Chip chip && chip.getColor() == getColor()) {
